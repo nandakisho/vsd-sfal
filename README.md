@@ -31,7 +31,25 @@ sudo apt install gtkwave
 
 1.4: Iverilog:
      used to verify the rtl code for basic gates, adders, multipliers, adders etc. 
-     All the verilog codes hace assosciated Test bench. 
-     Iverilog uses two arguments to dump a intermediate  a.out file, which can be run in terminal to get the the VCD file.
-     VCD: Variable change dump
-     /home/nkm/Pictures/Screenshots/Screenshot from 2024-07-23 03-01-24.png
+     All the verilog codes have assosciated Test bench. 
+     Iverilog uses two arguments to dump a intermediate a.out file, which can be run in terminal to get the the VCD file.
+     VCD: Value change dump
+     
+![Screenshot from 2024-07-23 03-01-24](https://github.com/user-attachments/assets/060e9b70-54c1-46b8-95a4-5f03f40a3157)
+
+
+vcd file is launched using gtkwave to verify the waveform
+     ![Screenshot from 2024-07-23 23-46-41](https://github.com/user-attachments/assets/20fd89c5-7d97-451e-a639-ca7bff8639d9)
+     ![Screenshot from 2024-07-23 23-47-33](https://github.com/user-attachments/assets/294f982d-200d-4c10-93a4-18c72ba35c47)
+Snippet from Test Bench to verify the output of counter:
+     ![Screenshot from 2024-07-23 23-51-20](https://github.com/user-attachments/assets/bb801a3e-9d40-4f04-bcce-cec7e3b95482)
+
+
+
+
+
+
+
+
+
+     
