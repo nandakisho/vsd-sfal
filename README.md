@@ -45,6 +45,48 @@ Snippet from Test Bench to verify the output of counter:
      ![Screenshot from 2024-07-23 23-51-20](https://github.com/user-attachments/assets/bb801a3e-9d40-4f04-bcce-cec7e3b95482)
 
 
+YOSYS: The open source synthesizer tool
+    ![Screenshot from 2024-07-23 02-54-34](https://github.com/user-attachments/assets/78bd9e4a-dd80-4830-8b0e-3d92c5e3b760)
+
+commands used: in order
+
+Read Liberty: The Infamous .lib file. Lib used here is sky130 typical library. P: Typical T:25 V:1.8v
+read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+
+Read verilog: path to vrilog file mentioned here
+read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
+
+Yosys command to synthesize the deign under test to generic tech, irrespective og the sky130nm tech
+synth -top good_counter 
+
+Tech mapping to sky130nm cells, This gives us data on what kind of cells were handpicked from sky130 lib
+abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+
+SHOW: command use to view the dumped schematic/logic, in its Heirachical or flat nature
+show 
+
+Write the gate level netlist (Heirarchical netlist), which can be used further for Placement and Route activites.
+write_verilog -noattr good_counter_ghnetlist.v
+
+Flatten: Command used to get flat netlist.
+flatten
+
+Write out the gate level netlist for the flatten netlist
+write_verilog -noattr good_counter_gfnetlist.v
+
+![Screenshot from 2024-07-23 03-08-18](https://github.com/user-attachments/assets/3403b482-1a57-475e-b0f9-608b9d7f68e5)
+![Screenshot from 2024-07-23 03-09-22](https://github.com/user-attachments/assets/9b2c5335-a327-4013-b207-15621caee607)
+![Screenshot from 2024-07-23 03-10-48](https://github.com/user-attachments/assets/0473cccc-a0cc-4b0d-9c16-970ab71611a6)
+![Screenshot from 2024-07-23 03-11-16](https://github.com/user-attachments/assets/1e0ade3a-f3b8-465e-9bd0-13d044e67610)
+![Screenshot from 2024-07-24 00-07-22](https://github.com/user-attachments/assets/04a88079-4884-47f3-907d-3a94e4c3900d)
+
+
+
+
+
+
+
+
 
 
 
