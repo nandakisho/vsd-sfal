@@ -51,28 +51,28 @@ YOSYS: The open source synthesizer tool
 commands used: in order
 
 Read Liberty: The Infamous .lib file. Lib used here is sky130 typical library. P: Typical T:25 V:1.8v
-read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+    read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
 
 Read verilog: path to vrilog file mentioned here
-read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
+    read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
 
 Yosys command to synthesize the deign under test to generic tech, irrespective og the sky130nm tech
-synth -top good_counter 
+    synth -top good_counter 
 
 Tech mapping to sky130nm cells, This gives us data on what kind of cells were handpicked from sky130 lib
-abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
 
 SHOW: command use to view the dumped schematic/logic, in its Heirachical or flat nature
-show 
+    show 
 
 Write the gate level netlist (Heirarchical netlist), which can be used further for Placement and Route activites.
-write_verilog -noattr good_counter_ghnetlist.v
+    write_verilog -noattr good_counter_ghnetlist.v
 
 Flatten: Command used to get flat netlist.
-flatten
+    flatten
 
 Write out the gate level netlist for the flatten netlist
-write_verilog -noattr good_counter_gfnetlist.v
+    write_verilog -noattr good_counter_gfnetlist.v
 
 ![Screenshot from 2024-07-23 03-08-18](https://github.com/user-attachments/assets/3403b482-1a57-475e-b0f9-608b9d7f68e5)
 ![Screenshot from 2024-07-23 03-09-22](https://github.com/user-attachments/assets/9b2c5335-a327-4013-b207-15621caee607)
