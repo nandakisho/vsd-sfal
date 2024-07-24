@@ -54,7 +54,7 @@ Read Liberty: The Infamous .lib file. Lib used here is sky130 typical library. P
     read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
 
 Read verilog: path to vrilog file mentioned here
-    read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
+     read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
 
 Yosys command to synthesize the deign under test to generic tech, irrespective og the sky130nm tech
     synth -top good_counter 
