@@ -100,6 +100,24 @@ synth -top multiple_modules: return defaults Heirarchy enabled design.
 flatten: command used to get Flat netlist
 ![Screenshot from 2024-07-25 02-08-17](https://github.com/user-attachments/assets/ed1ff579-4fd1-4386-814f-e3a0590bdf98)
 
+Submodule level synthesis:
+Need: To instantisate "identical modules" multiple times in a design, instaed of overloading the tool, that can break due to the code repitition.
+The synthesized module can be instantiated as many times as we need and stich them in top file.
+
+synth -top sub_module1:
+
+![Screenshot from 2024-07-25 02-27-55](https://github.com/user-attachments/assets/e82d0a6e-c3fd-4738-9c2b-e8cc385e6934)
+
+![Screenshot from 2024-07-25 02-21-28](https://github.com/user-attachments/assets/685592bc-48ed-4236-93c2-37ed1ed89d72)
+
+
+synth -top sub_module2:
+
+
+![Screenshot from 2024-07-25 02-28-12](https://github.com/user-attachments/assets/27f6d605-0778-4b67-b52d-2775d0d3ae29)
+
+![Screenshot from 2024-07-25 02-22-43](https://github.com/user-attachments/assets/9bc86156-5be5-47f5-a93f-180062f89ce2)
+
 
 
 
