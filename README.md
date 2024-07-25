@@ -46,7 +46,7 @@ Snippet from Test Bench to verify the output of counter:
 
 
 YOSYS: The open source synthesizer tool
-    ![Screenshot from 2024-07-23 02-54-34](https://github.com/user-attachments/assets/78bd9e4a-dd80-4830-8b0e-3d92c5e3b760)
+     ![Screenshot from 2024-07-23 02-54-34](https://github.com/user-attachments/assets/78bd9e4a-dd80-4830-8b0e-3d92c5e3b760)
 
 commands used: in order
 
@@ -79,6 +79,30 @@ Write out the gate level netlist for the flatten netlist
 ![Screenshot from 2024-07-23 03-10-48](https://github.com/user-attachments/assets/0473cccc-a0cc-4b0d-9c16-970ab71611a6)
 ![Screenshot from 2024-07-23 03-11-16](https://github.com/user-attachments/assets/1e0ade3a-f3b8-465e-9bd0-13d044e67610)
 ![Screenshot from 2024-07-24 00-07-22](https://github.com/user-attachments/assets/04a88079-4884-47f3-907d-3a94e4c3900d)
+
+Synthesized netlist:
+![image](https://github.com/user-attachments/assets/0477bef7-a001-48e7-aef5-049b15a372b9)
+
+Sky130 lib snippet:
+![Screenshot from 2024-07-25 00-41-18](https://github.com/user-attachments/assets/82ace1d9-7a33-45c3-a440-0e404f70bd35)
+
+
+Hierarchy vs Flat netlist: .v file used: multiple_modules.v
+read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/multiple_modules.v 
+synth -top multiple_modules 
+show multiple_modules 
+abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+
+synth -top multiple_modules: return defaults Heirarchy enabled design.
+![Screenshot from 2024-07-25 02-04-32](https://github.com/user-attachments/assets/754cb398-32e9-48a0-a4a2-20554d602049)
+
+flatten: command used to get Flat netlist
+![Screenshot from 2024-07-25 02-08-17](https://github.com/user-attachments/assets/ed1ff579-4fd1-4386-814f-e3a0590bdf98)
+
+
+
+
 
 
 
