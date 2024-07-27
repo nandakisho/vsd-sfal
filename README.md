@@ -252,6 +252,18 @@ Stats:
 after mapping
 ![Screenshot from 2024-07-27 22-41-27](https://github.com/user-attachments/assets/03d960d1-3883-4388-8417-7c33c67799cf)
 
+# 3 input and gate
+
+verilog snippet:
+
+![Screenshot from 2024-07-27 22-51-50](https://github.com/user-attachments/assets/97052fa5-9297-4c5b-bb5b-649b1ed03069)
+
+abc mapped:
+
+![Screenshot from 2024-07-27 22-51-17](https://github.com/user-attachments/assets/e0697802-85b7-426f-af5d-2999dbe69c39)
+
+
+
 
 
 
