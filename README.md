@@ -263,6 +263,40 @@ abc mapped:
 ![Screenshot from 2024-07-27 22-51-17](https://github.com/user-attachments/assets/e0697802-85b7-426f-af5d-2999dbe69c39)
 
 
+# Sequential Optimization:
+Verilog snippet:
+
+D Flip Flop implemeted due to Q toggling
+![Screenshot from 2024-07-27 23-35-10](https://github.com/user-attachments/assets/6fafcf37-ef69-4e66-8b39-69fe528f11f4)
+
+show:
+
+![Screenshot from 2024-07-27 23-29-37](https://github.com/user-attachments/assets/30a592ed-adde-4848-8a17-b11ac6c6c892)
+
+
+gate level netlist:
+
+![Screenshot from 2024-07-27 23-38-10](https://github.com/user-attachments/assets/a9a1cff7-fb5c-4a55-8e47-e75ffafcca1e)
+
+
+Verilog snippet:
+
+DFF not inferred due to tie high logic equivalent circuit.
+![Screenshot from 2024-07-27 23-34-35](https://github.com/user-attachments/assets/fedefd3b-9abb-45b0-86cb-732b894365d5)
+
+
+
+show:
+![Screenshot from 2024-07-27 23-31-22](https://github.com/user-attachments/assets/ff6dd6a6-c518-402e-93f5-0e3cfba21207)
+
+
+gate level netlist:
+![Screenshot from 2024-07-27 23-34-35](https://github.com/user-attachments/assets/750179f8-6e79-4b1f-b36c-d9801178083c)
+
+
+
+
+
 
 
 
