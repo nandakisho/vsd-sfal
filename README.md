@@ -208,6 +208,55 @@ Synthesized netlist:
 # Combination and Sequential Optimizations:
 ## Topics like: Constant propagation, Boolean optimisation, State Optimisation, Retiming, Logic Cloning were explained with basic combinational and DFF gates.
 
+# Opt Lab
+To understand the implementation of basic Ternary statements into logic gates by Yosys.
+
+Verilog snippet:
+
+![Screenshot from 2024-07-27 22-32-09](https://github.com/user-attachments/assets/7394f217-818e-4787-b59f-2d8da384f607)
+
+Basically a ternary expression for AND gate: Yosys implementing and gate with Opt_clean -purge
+![Screenshot from 2024-07-27 22-31-07](https://github.com/user-attachments/assets/473849e9-bea9-4157-bda1-4dcf2f94b25c)
+
+commands used:
+
+![Screenshot from 2024-07-27 22-33-56](https://github.com/user-attachments/assets/a4de0ffe-fd1b-4738-a2b7-886958038be7)
+
+# Opt check 2
+Verilog snippet:
+![Screenshot from 2024-07-27 22-48-31](https://github.com/user-attachments/assets/866b5a1a-5e03-463f-bb7b-e49ba7fc7903)
+
+
+OR gate Implemented:
+
+
+show: before opt_purge -clean
+
+![Screenshot from 2024-07-27 22-40-36](https://github.com/user-attachments/assets/cd1ac00e-d776-4280-be68-f02e32715a3e)
+
+After:    
+    Opt_clean -purge
+    
+show:
+![Screenshot from 2024-07-27 22-42-03](https://github.com/user-attachments/assets/76c79d4c-96c8-4bff-81c6-346a764e9ca8)
+
+
+Stats: 
+
+before mapping
+![Screenshot from 2024-07-27 22-40-19](https://github.com/user-attachments/assets/234fe7cc-24b9-4812-b0ba-6e5816682557)
+
+
+Stats: 
+
+after mapping
+![Screenshot from 2024-07-27 22-41-27](https://github.com/user-attachments/assets/03d960d1-3883-4388-8417-7c33c67799cf)
+
+
+
+
+
+
 
 
 
