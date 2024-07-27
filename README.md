@@ -165,6 +165,50 @@ synth -top sub_module2:
 ![Screenshot from 2024-07-25 02-22-43](https://github.com/user-attachments/assets/9bc86156-5be5-47f5-a93f-180062f89ce2)
 
 
+# DFF usage in Yosys.
+## DFF with asynchronous reset:
+verilog snippet:
+
+![Screenshot from 2024-07-27 21-45-30](https://github.com/user-attachments/assets/f29aa735-59c7-4915-aa38-cb9d9e5a4c38)
+
+
+Waveform:
+
+![Screenshot from 2024-07-27 18-02-34](https://github.com/user-attachments/assets/53a9ec55-f3b5-4c50-9702-a23afa80dc21)
+
+show:
+![Screenshot from 2024-07-27 18-35-05](https://github.com/user-attachments/assets/ef4730d8-135c-4741-9ead-67163b0b3b8f)
+
+## DFF with Asynchronouts set
+
+Verilog snippet:
+
+![Screenshot from 2024-07-27 21-45-55](https://github.com/user-attachments/assets/c82714ec-89a5-4acc-9f68-12eec14dfaba)
+
+Waveform:
+
+![Screenshot from 2024-07-27 18-07-07](https://github.com/user-attachments/assets/78b0b162-b275-4c95-be61-36733492e0a0)
+
+show:
+
+![Screenshot from 2024-07-27 18-40-57](https://github.com/user-attachments/assets/453290d3-368e-4f4a-aa10-6ad8030dd68c)
+
+
+# Combination and Sequential Optimizations:
+## Topics like: Constant propagation, Boolean optimisation, State Optimisation, Retiming, Logic Cloning were explained with basic combinational and DFF gates.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
