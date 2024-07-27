@@ -177,7 +177,12 @@ Waveform:
 ![Screenshot from 2024-07-27 18-02-34](https://github.com/user-attachments/assets/53a9ec55-f3b5-4c50-9702-a23afa80dc21)
 
 show:
-![Screenshot from 2024-07-27 18-35-05](https://github.com/user-attachments/assets/ef4730d8-135c-4741-9ead-67163b0b3b8f)
+![Screenshot from 2024-07-27 22-07-29](https://github.com/user-attachments/assets/3acd41b7-644b-43eb-8fcd-be06ab0cbfd3)
+
+synthesized netlist:
+![Screenshot from 2024-07-27 22-10-25](https://github.com/user-attachments/assets/df723a86-442d-4ed6-9653-056e0b292db2)
+
+
 
 ## DFF with Asynchronouts set
 
@@ -191,7 +196,13 @@ Waveform:
 
 show:
 
-![Screenshot from 2024-07-27 18-40-57](https://github.com/user-attachments/assets/453290d3-368e-4f4a-aa10-6ad8030dd68c)
+![Screenshot from 2024-07-27 22-13-35](https://github.com/user-attachments/assets/36f77fd8-6e36-4839-abb4-5e608d541ffb)
+
+Synthesized netlist:
+
+![Screenshot from 2024-07-27 22-15-18](https://github.com/user-attachments/assets/031a35e7-660b-4811-9819-d8e8c95c85dc)
+
+
 
 
 # Combination and Sequential Optimizations:
