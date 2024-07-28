@@ -302,7 +302,8 @@ verilog snippet:
 
 
 gtkwave simualtion:
-![Screenshot from 2024-07-27 23-53-29](https://github.com/user-attachments/assets/7fd8d2b4-357c-42f3-b685-6c6cbe3dc3cb)
+![Screenshot from 2024-07-28 00-11-26](https://github.com/user-attachments/assets/9fd415d7-cce7-4829-90e1-53f0fdfcd00a)
+
 
 
 show:
