@@ -294,6 +294,27 @@ gate level netlist:
 ![Screenshot from 2024-07-27 23-34-35](https://github.com/user-attachments/assets/750179f8-6e79-4b1f-b36c-d9801178083c)
 
 
+DFF const 3: The tricky Flop: Reset and Set flop with Reset and clock shorted. A small glitch can be observed in gtkwave simulation.
+This can break the circuit functionality.
+
+verilog snippet:
+![Screenshot from 2024-07-27 23-54-32](https://github.com/user-attachments/assets/443e3290-9f78-4f3e-866b-25450ebb6810)
+
+
+gtkwave simualtion:
+![Screenshot from 2024-07-27 23-53-29](https://github.com/user-attachments/assets/7fd8d2b4-357c-42f3-b685-6c6cbe3dc3cb)
+
+
+show:
+![Screenshot from 2024-07-27 23-49-57](https://github.com/user-attachments/assets/0ad89813-ffbe-4a33-9e1b-a2db413d3f53)
+
+
+gate level netlist:
+![Screenshot from 2024-07-27 23-51-24](https://github.com/user-attachments/assets/3fa31271-e753-46b9-859c-bf029b608dfd)
+
+
+
+
 
 
 
