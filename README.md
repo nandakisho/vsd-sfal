@@ -295,7 +295,7 @@ gate level netlist:
 
 
 DFF const 3: The tricky Flop: Reset and Set flop with Reset and clock shorted. A small glitch can be observed in gtkwave simulation.
-This can break the circuit functionality.
+This can break the circuit functionality, if not handled carefully.
 
 verilog snippet:
 ![Screenshot from 2024-07-27 23-54-32](https://github.com/user-attachments/assets/443e3290-9f78-4f3e-866b-25450ebb6810)
