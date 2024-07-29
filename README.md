@@ -314,6 +314,27 @@ gate level netlist:
 ![Screenshot from 2024-07-27 23-51-24](https://github.com/user-attachments/assets/3fa31271-e753-46b9-859c-bf029b608dfd)
 
 
+# GLS: Gate level Simulation
+## caveats observed in verilog coding that will affect GLS mismtach.
+1. sensitivity level mismtach
+2. blocking and non blocking mismatch
+3. non standandard verilog coding
+
+## Sensitivity level mismtach
+![Screenshot from 2024-07-29 20-12-09](https://github.com/user-attachments/assets/6cba1d83-68c2-4f18-b643-c6402450a7a0)
+
+## Blocking and non blocking statements
+![Screenshot from 2024-07-29 20-13-38](https://github.com/user-attachments/assets/a0ca6b6c-98e4-4a31-a7b5-94b3d22be058)
+![Screenshot from 2024-07-29 20-14-46](https://github.com/user-attachments/assets/f05a6916-27ee-46ff-ab41-bd06d6692840)
+![Screenshot from 2024-07-29 20-15-22](https://github.com/user-attachments/assets/13786a92-e1c3-4f29-9f11-009e7306b338)
+
+
+
+
+
+   
+
+
 
 
 
