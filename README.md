@@ -216,6 +216,7 @@ Verilog snippet:
 ![Screenshot from 2024-07-27 22-32-09](https://github.com/user-attachments/assets/7394f217-818e-4787-b59f-2d8da384f607)
 
 Basically a ternary expression for AND gate: Yosys implementing and gate with Opt_clean -purge
+
 ![Screenshot from 2024-07-27 22-31-07](https://github.com/user-attachments/assets/473849e9-bea9-4157-bda1-4dcf2f94b25c)
 
 commands used:
@@ -223,7 +224,9 @@ commands used:
 ![Screenshot from 2024-07-27 22-33-56](https://github.com/user-attachments/assets/a4de0ffe-fd1b-4738-a2b7-886958038be7)
 
 # Opt check 2
+
 Verilog snippet:
+
 ![Screenshot from 2024-07-27 22-48-31](https://github.com/user-attachments/assets/866b5a1a-5e03-463f-bb7b-e49ba7fc7903)
 
 
@@ -237,19 +240,23 @@ show: before opt_purge -clean
 After:    
     Opt_clean -purge
     
+    
 show:
+
 ![Screenshot from 2024-07-27 22-42-03](https://github.com/user-attachments/assets/76c79d4c-96c8-4bff-81c6-346a764e9ca8)
 
 
 Stats: 
 
 before mapping
+
 ![Screenshot from 2024-07-27 22-40-19](https://github.com/user-attachments/assets/234fe7cc-24b9-4812-b0ba-6e5816682557)
 
 
 Stats: 
 
 after mapping
+
 ![Screenshot from 2024-07-27 22-41-27](https://github.com/user-attachments/assets/03d960d1-3883-4388-8417-7c33c67799cf)
 
 # 3 input and gate
@@ -264,9 +271,11 @@ abc mapped:
 
 
 # Sequential Optimization:
+
 Verilog snippet:
 
 D Flip Flop implemeted due to Q toggling
+
 ![Screenshot from 2024-07-27 23-35-10](https://github.com/user-attachments/assets/6fafcf37-ef69-4e66-8b39-69fe528f11f4)
 
 show:
@@ -282,15 +291,18 @@ gate level netlist:
 Verilog snippet:
 
 DFF not inferred due to tie high logic equivalent circuit.
+
 ![Screenshot from 2024-07-27 23-34-35](https://github.com/user-attachments/assets/fedefd3b-9abb-45b0-86cb-732b894365d5)
 
 
 
 show:
+
 ![Screenshot from 2024-07-27 23-31-22](https://github.com/user-attachments/assets/ff6dd6a6-c518-402e-93f5-0e3cfba21207)
 
 
 gate level netlist:
+
 ![Screenshot from 2024-07-27 23-34-35](https://github.com/user-attachments/assets/750179f8-6e79-4b1f-b36c-d9801178083c)
 
 
@@ -298,19 +310,23 @@ DFF const 3: The tricky Flop: Reset and Set flop with Reset and clock shorted. A
 This can break the circuit functionality, if not handled carefully.
 
 verilog snippet:
+
 ![Screenshot from 2024-07-27 23-54-32](https://github.com/user-attachments/assets/443e3290-9f78-4f3e-866b-25450ebb6810)
 
 
 gtkwave simualtion:
+
 ![Screenshot from 2024-07-28 00-11-26](https://github.com/user-attachments/assets/9fd415d7-cce7-4829-90e1-53f0fdfcd00a)
 
 
 
 show:
+
 ![Screenshot from 2024-07-27 23-49-57](https://github.com/user-attachments/assets/0ad89813-ffbe-4a33-9e1b-a2db413d3f53)
 
 
 gate level netlist:
+
 ![Screenshot from 2024-07-27 23-51-24](https://github.com/user-attachments/assets/3fa31271-e753-46b9-859c-bf029b608dfd)
 
 
@@ -321,12 +337,95 @@ gate level netlist:
 3. non standandard verilog coding
 
 ## Sensitivity level mismtach
+
 ![Screenshot from 2024-07-29 20-12-09](https://github.com/user-attachments/assets/6cba1d83-68c2-4f18-b643-c6402450a7a0)
 
 ## Blocking and non blocking statements
+
 ![Screenshot from 2024-07-29 20-13-38](https://github.com/user-attachments/assets/a0ca6b6c-98e4-4a31-a7b5-94b3d22be058)
 ![Screenshot from 2024-07-29 20-14-46](https://github.com/user-attachments/assets/f05a6916-27ee-46ff-ab41-bd06d6692840)
 ![Screenshot from 2024-07-29 20-15-22](https://github.com/user-attachments/assets/13786a92-e1c3-4f29-9f11-009e7306b338)
+
+
+## Good Simulation match between: verilog and gate level netlist
+
+Verilog Snippet:
+
+![Screenshot from 2024-07-29 20-21-06](https://github.com/user-attachments/assets/03318624-3867-4e9f-8e7a-458707363292)
+
+
+gtkwave simulation:
+
+![Screenshot from 2024-07-29 20-20-15](https://github.com/user-attachments/assets/d7512a46-239a-4c8b-b304-d9ed13938124)
+
+
+
+gate level netlist:
+
+![Screenshot from 2024-07-29 20-21-50](https://github.com/user-attachments/assets/a6cbe528-f675-477d-a309-9ab7c0795711)
+
+
+
+gtkwave simulation:
+![Screenshot from 2024-07-29 20-24-54](https://github.com/user-attachments/assets/60214645-39fa-4fd5-abe0-b21c059545fd)
+
+
+
+commands used:
+
+Yosys:
+
+read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_mux.v 
+synth -top good_mux 
+abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show 
+write_verilog -noattr good_mux_gnetlist.v
+
+iverilog and gtkwave commands used:
+
+iverilog ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/primitives.v ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/sky130_fd_sc_hd.v ../yosys/projects/gls_lab/good_mux_gnetlist.v ../sky130RTLDesignAndSynthesisWorkshop/verilog_files/tb_good_mux.v
+
+gtkwave tb_good_mux.vcd
+
+
+## Simulation mismatch: due to sensitivity mismatch
+
+verilog snippet:
+
+![Screenshot from 2024-07-29 20-27-13](https://github.com/user-attachments/assets/0c69ea6d-024c-4df5-adf2-f72745af21ef)
+
+
+
+gtkwave simulation:
+
+![Screenshot from 2024-07-29 20-29-34](https://github.com/user-attachments/assets/3b560420-6417-4cd6-ba4f-ec5275d1019e)
+
+
+
+gate level netlist:
+
+![Screenshot from 2024-07-29 20-32-10](https://github.com/user-attachments/assets/3f22ff1f-4bf1-4fb6-a2f7-f685b29e2f1d)
+
+
+
+
+gtkwave simulation:
+
+![Screenshot from 2024-07-29 20-34-42](https://github.com/user-attachments/assets/8e6db773-deae-4d51-b14a-2296bffdf66d)
+
+
+
+yosys:
+
+![Screenshot from 2024-07-29 20-30-55](https://github.com/user-attachments/assets/26da1829-5753-4f01-aee2-000401932e07)
+
+
+
+
+
+
+
 
 
 
