@@ -422,6 +422,79 @@ yosys:
 
 
 
+# DC: SYNOPSYS DESIGN COMPILER
+## Sythesis tool: Used to convert RTL to gate level netlist.
+
+![Screenshot 2024-07-29 at 10 52 06 PM](https://github.com/user-attachments/assets/3c27aa9d-e74b-4655-b5a1-e8e0d0f2e197)
+Source: UC Davis
+
+
+### Inputs to DC:
+1. .lib/.db: Sky130 file
+2. .SDC: Synopsys Constraint file.
+3. .v: RTL netlist
+
+### Outputs:
+Synthesis Qor
+gate level netlist
+ddc file.
+
+Lab1: Flop with Latch enable
+
+Commands used:
+csh #to enter C Shell
+DC_SHELL #to open Design compiler
+
+![Screenshot 2024-07-29 at 11 00 42 PM](https://github.com/user-attachments/assets/94e13719-03e0-4572-9fae-e84fc9769a98)
+
+.synopsys_dc.setup file: to initialize the libraries
+
+#setting target and link library to defualy sky 130nm db#
+set target_library ../lib/sky130_fd_sc_hd__tt_025C_1v80.db
+set link_library { * ../lib/sky130_fd_sc_hd__tt_025C_1v80.db}
+
+commands to write verilog and ddc file:
+
+![Screenshot 2024-07-29 at 11 05 41 PM](https://github.com/user-attachments/assets/d99cc841-de69-4d8a-b231-a72b859f9726)
+
+
+gate level netlist:
+
+![Screenshot 2024-07-29 at 11 04 53 PM](https://github.com/user-attachments/assets/fcfe4224-d749-4136-af1e-17a2b8cdc92b)
+
+# Design Vision: 
+## it is the gui version used to load the ddc file to view the schematic.
+
+commands used:
+
+csh
+design_vision
+read_ddc lab1.ddc
+
+![Screenshot 2024-07-29 at 11 11 06 PM](https://github.com/user-attachments/assets/7215e8a1-6364-435e-95b3-db7aff6f530a)
+
+schematic:
+
+abstract:
+
+![Screenshot 2024-07-29 at 11 12 54 PM](https://github.com/user-attachments/assets/a0f45812-8c58-45c4-86cf-db6fb263224d)
+
+
+Expand Heirarchy:
+
+![Screenshot 2024-07-29 at 11 13 02 PM](https://github.com/user-attachments/assets/5916cb26-46e4-45fb-b2f4-a588fc762c43)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
