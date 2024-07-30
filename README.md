@@ -522,6 +522,36 @@ Sequential gates:
 
 <img width="1479" alt="Screenshot 2024-07-29 at 11 39 35 PM" src="https://github.com/user-attachments/assets/93005cb4-946a-4bc1-8c66-03144be9809b">
 
+# CONSTRAINING A DESIGN:
+
+## Snippet for Constaining a design:
+
+<img width="1656" alt="Screenshot 2024-07-30 at 12 09 55 PM" src="https://github.com/user-attachments/assets/9eca2ead-0efa-4e80-a8ab-a0ec78e3c2fd">
+
+SDC plays a crucial rule to define the clock parameters to meet timing of a design.
+
+## Timing Paths:
+1. IN2REG
+2. REG2REG
+3. REG2OUT
+4. IN2OUT
+
+IO Modelling: IO budgetting is important to model IN2REG and REG2OUT paths.
+SDC CLK will constrain all REG2REG paths.
+
+## Important check:
+To do Sanity checks for all input files, report Qor after each stage of PnR.
+
+#Summary:
+
+<img width="1656" alt="Screenshot 2024-07-30 at 12 40 07 PM" src="https://github.com/user-attachments/assets/7c850f96-d397-4940-8d87-eb6e33bda985">
+<img width="1656" alt="Screenshot 2024-07-30 at 12 44 33 PM" src="https://github.com/user-attachments/assets/d7148e56-cd57-4776-b5f5-8a100f4805d0">
+
+
+
+
+
+
 
 
 
