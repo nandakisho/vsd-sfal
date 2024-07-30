@@ -492,6 +492,42 @@ Expand Heirarchy:
 ![Screenshot 2024-07-29 at 11 18 37 PM](https://github.com/user-attachments/assets/594aa0b3-2f05-408d-b18b-913e88e780f8)
 
 
+# STA: Static Timing Analysis
+
+what is setup time:
+The min time for which the data needs to be stable before the clock edge.
+
+<img width="1301" alt="Screenshot 2024-07-29 at 11 23 06 PM" src="https://github.com/user-attachments/assets/1d86c109-09f0-4571-a5fc-af0a8e62f81b">
+
+
+
+What is hold time:
+The min time the data needs to be stable after the clock edge.
+
+<img width="1040" alt="Screenshot 2024-07-29 at 11 27 44 PM" src="https://github.com/user-attachments/assets/92580455-c343-40e9-a21c-adced4d4d0ad">
+
+Delay of a cell:
+
+<img width="1479" alt="Screenshot 2024-07-29 at 11 35 21 PM" src="https://github.com/user-attachments/assets/655c9393-f1a2-4bbf-99cb-16dc4acf83fa">
+
+Timing arcs:
+
+Combinational gates:
+
+<img width="1393" alt="Screenshot 2024-07-29 at 11 39 07 PM" src="https://github.com/user-attachments/assets/dea11afe-090f-40e3-a680-1839c5b97b6d">
+
+
+
+Sequential gates:
+
+<img width="1479" alt="Screenshot 2024-07-29 at 11 39 35 PM" src="https://github.com/user-attachments/assets/93005cb4-946a-4bc1-8c66-03144be9809b">
+
+
+
+
+
+
+
 
 
 
