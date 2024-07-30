@@ -485,6 +485,14 @@ Expand Heirarchy:
 ![Screenshot 2024-07-29 at 11 13 02 PM](https://github.com/user-attachments/assets/5916cb26-46e4-45fb-b2f4-a588fc762c43)
 
 
+# Synopsys tools works with TCL language:
+
+## using foreach collection to loop thru all the cells used in library:
+
+![Screenshot 2024-07-29 at 11 18 37 PM](https://github.com/user-attachments/assets/594aa0b3-2f05-408d-b18b-913e88e780f8)
+
+
+
 
 
 
