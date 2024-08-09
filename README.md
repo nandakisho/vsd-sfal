@@ -1,7 +1,7 @@
 # vsd-sfal
 <details>
 <summary>
-Day 1: Install yosys, iverilog and gtkwave </summary>
+Install yosys, iverilog and gtkwave </summary>
 1.1: install yosys
 
 $ sudo apt-get update
@@ -335,7 +335,7 @@ gate level netlist:
 
 <details>
 <summary>
-# GLS: Gate level Simulation </summary>
+GLS: Gate level Simulation </summary>
 ## caveats observed in verilog coding that will affect GLS mismtach.
 1. sensitivity level mismtach
 2. blocking and non blocking mismatch
@@ -505,7 +505,7 @@ Expand Heirarchy:
 <details>
 
 <summary>
-# STA: Static Timing Analysis</summary>
+STA: Static Timing Analysis</summary>
 
 what is setup time:
 The min time for which the data needs to be stable before the clock edge.
