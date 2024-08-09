@@ -565,6 +565,28 @@ To do Sanity checks for all input files, report Qor after each stage of PnR.
 <img width="1656" alt="Screenshot 2024-07-30 at 12 40 07 PM" src="https://github.com/user-attachments/assets/7c850f96-d397-4940-8d87-eb6e33bda985">
 <img width="1656" alt="Screenshot 2024-07-30 at 12 44 33 PM" src="https://github.com/user-attachments/assets/d7148e56-cd57-4776-b5f5-8a100f4805d0">
 
+</details>
+
+<details>
+<summary> Intoduction to BabySoc</summary>
+What is SoC?
+SoC is a single-die chip that has some different IP cores on it. These IPs could vary from microprocessors (completely digital) to 5G broadband modems (completely analog).
+The design of a system on chip usually includes a central processing unit, memory, ports for input and outputs, secondary storage devices, and peripheral interfaces such as Timers, etc.
+Depending upon the requirement it can also consist of a digital or analog signal processing system or a floating-point unit.
+SoC with equivalent functionality will have increased performance and reduced power consumption as well as a smaller semiconductor die area.
+
+Why SoC?
+
+VSDBabySoC is a small yet powerful RISCV-based SoC. The main purpose of designing such a small SoC is to test three open-source IP cores together for the first time and calibrate the analog part of it. VSDBabySoC contains one RVMYTH microprocessor, an 8x-PLL to generate a stable clock, and a 10-bit DAC to communicate with other analog devices.
+
+vsdbabysoc_block_diagram
+
+Problem statement
+This work discusses the different aspects of designing a small SoC based on RVMYTH (a RISCV-based processor). This SoC will leverage a PLL as its clock generator and controller and a 10-bit DAC as a way to talk to the outside world. Other electrical devices with proper analog input like televisions, and mobile phones could manipulate DAC output and provide users with music sound or video frames. At the end of the day, it is possible to use this small fully open-source and well-documented SoC which has been fabricated under Sky130 technology, for educational purposes.
+
+
+
+
 
 
 
