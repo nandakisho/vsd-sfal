@@ -1,5 +1,7 @@
 # vsd-sfal
-Day 1: Install yosys, iverilog and gtkwave
+<details>
+<summary>
+Day 1: Install yosys, iverilog and gtkwave </summary>
 1.1: install yosys
 
 $ sudo apt-get update
@@ -329,8 +331,11 @@ gate level netlist:
 
 ![Screenshot from 2024-07-27 23-51-24](https://github.com/user-attachments/assets/3fa31271-e753-46b9-859c-bf029b608dfd)
 
+</details>
 
-# GLS: Gate level Simulation
+<details>
+<summary>
+# GLS: Gate level Simulation </summary>
 ## caveats observed in verilog coding that will affect GLS mismtach.
 1. sensitivity level mismtach
 2. blocking and non blocking mismatch
@@ -421,8 +426,12 @@ yosys:
 ![Screenshot from 2024-07-29 20-30-55](https://github.com/user-attachments/assets/26da1829-5753-4f01-aee2-000401932e07)
 
 
+</details>
 
-# DC: SYNOPSYS DESIGN COMPILER
+<details>
+
+<summary>
+DC: SYNOPSYS DESIGN COMPILER</summary>
 ## Sythesis tool: Used to convert RTL to gate level netlist.
 
 ![Screenshot 2024-07-29 at 10 52 06 PM](https://github.com/user-attachments/assets/3c27aa9d-e74b-4655-b5a1-e8e0d0f2e197)
@@ -491,8 +500,12 @@ Expand Heirarchy:
 
 ![Screenshot 2024-07-29 at 11 18 37 PM](https://github.com/user-attachments/assets/594aa0b3-2f05-408d-b18b-913e88e780f8)
 
+</details>
 
-# STA: Static Timing Analysis
+<details>
+
+<summary>
+# STA: Static Timing Analysis</summary>
 
 what is setup time:
 The min time for which the data needs to be stable before the clock edge.
@@ -522,7 +535,12 @@ Sequential gates:
 
 <img width="1479" alt="Screenshot 2024-07-29 at 11 39 35 PM" src="https://github.com/user-attachments/assets/93005cb4-946a-4bc1-8c66-03144be9809b">
 
-# CONSTRAINING A DESIGN:
+</details>
+
+<details>
+
+<summary>
+CONSTRAINING A DESIGN:</summary>
 
 ## Snippet for Constaining a design:
 
