@@ -664,15 +664,15 @@ using wget command to import latest lib from git repo
 
 commands used to convert:.lib to .db
 
-1   read_lib avsddac.lib
-2  write_lib avsddac.lib -format db -output avsddac.db
-3  write_lib avsddac.lib -format db -output avsddac.db
-4  read_lib avsddac.lib
-5  write_lib avsddac -format db -output avsddac.db
-6  read_lib avsdpll.lib
-7  write_lib avsdpll -format db -output avsdpll.db
-8  read_lib sky130_fd_sc_hd__tt_025C_1v80.lib
-9  write_lib sky130_fd_sc_hd__tt_025C_1v80 -format db -output sky130_fd_sc_hd__tt_025C_1v80.db
+    read_lib avsddac.lib
+    write_lib avsddac.lib -format db -output avsddac.db
+    write_lib avsddac.lib -format db -output avsddac.db
+    read_lib avsddac.lib
+    write_lib avsddac -format db -output avsddac.db
+    read_lib avsdpll.lib
+    write_lib avsdpll -format db -output avsdpll.db
+    read_lib sky130_fd_sc_hd__tt_025C_1v80.lib
+    write_lib sky130_fd_sc_hd__tt_025C_1v80 -format db -output sky130_fd_sc_hd__tt_025C_1v80.db
 
 
 genearte neccesary .vh files: make pre_synth_sim
