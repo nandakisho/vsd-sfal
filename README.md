@@ -663,6 +663,7 @@ using wget command to import latest lib from git repo
 
 
 commands used to convert:.lib to .db
+
 1   read_lib avsddac.lib
 2  write_lib avsddac.lib -format db -output avsddac.db
 3  write_lib avsddac.lib -format db -output avsddac.db
@@ -677,6 +678,18 @@ commands used to convert:.lib to .db
 genearte neccesary .vh files: make pre_synth_sim
 
 ![image](https://github.com/user-attachments/assets/6a458044-eb41-407e-b7f7-354956299443)
+
+using dc_shell to synthesize the netlist:
+
+read all the design 
+
+![image](https://github.com/user-attachments/assets/6e236fb6-0e37-4d6f-bfd4-8874ed28d4a1)
+
+link the design:
+
+![image](https://github.com/user-attachments/assets/65511bce-1928-40bd-88c8-98e674c892b4)
+
+
 
     
 
