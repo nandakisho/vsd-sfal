@@ -569,11 +569,13 @@ To do Sanity checks for all input files, report Qor after each stage of PnR.
 
 <details>
 <summary> Intoduction to BabySoc</summary>
+    
 What is SoC?
 SoC is a single-die chip that has some different IP cores on it. These IPs could vary from microprocessors (completely digital) to 5G broadband modems (completely analog).
 The design of a system on chip usually includes a central processing unit, memory, ports for input and outputs, secondary storage devices, and peripheral interfaces such as Timers, etc.
 Depending upon the requirement it can also consist of a digital or analog signal processing system or a floating-point unit.
 SoC with equivalent functionality will have increased performance and reduced power consumption as well as a smaller semiconductor die area.
+
 
 Why SoC?
 
@@ -587,6 +589,32 @@ source: https://github.com/Devipriya1921/VSDBabySoC_ICC2
 
 Problem statement
 This work discusses the different aspects of designing a small SoC based on RVMYTH (a RISCV-based processor). This SoC will leverage a PLL as its clock generator and controller and a 10-bit DAC as a way to talk to the outside world. Other electrical devices with proper analog input like televisions, and mobile phones could manipulate DAC output and provide users with music sound or video frames. At the end of the day, it is possible to use this small fully open-source and well-documented SoC which has been fabricated under Sky130 technology, for educational purposes.
+
+Design elements used in BabySoC:
+ 1.RVMYTH
+ 2.PLL
+ 3.DAC
+ 4.SPI
+
+RVMYTH: It is basic RISCV CPU developed by Steve Hovver and VSD sysytem deisgn to comprehend the knowledge of a simple cpu and its working mechanism, it is a 5bit cpu machine.
+        All these designs are open source and modelled using their git repos, which are open source.
+
+PLL: The phase-locked loop (PLL) block is a feedback control system that automatically adjusts the phase of a locally generated signal to match the phase of an input signal. PLLs operate by producing an oscillator frequency to match the frequency of an input signal. In 
+     this locked condition, any slight change in the input signal first appears as a change in phase between the input signal and the oscillator frequency. This phase shift then acts as an error signal to change the frequency of the local PLL oscillator to match the 
+     input signal. The locking-onto-a-phase relationship between the input signal and the local oscillator accounts for the name phase-locked loop. PLLs are often used in high-speed communication applications.
+
+     Source: Intel
+
+DAC: It is a Digital to analog converted ubiquitously used across multiple IC domains, they mainly serve in conerting all digital signals to analog and helps with communicating either with external world or Intra chip.
+
+SPI: Serial Peripheral Interface it a protocol used for communication of data between devices, a synchronous mechanism with full duplex interface capability, maily serves intra chip.
+
+</details>
+
+<details>
+<summary> Post GLS simulation </summary>
+    
+</details>
 
 
 
