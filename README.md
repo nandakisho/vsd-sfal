@@ -677,9 +677,24 @@ commands used to convert:.lib to .db
 
 genearte neccesary .vh files: make pre_synth_sim
 
+    iverilog -o output/pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module
+
 ![image](https://github.com/user-attachments/assets/6a458044-eb41-407e-b7f7-354956299443)
 
 using dc_shell to synthesize the netlist:
+
+    set target_library /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db
+    set link_library {* /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db /home/nanda/babysoc/VSDBabySoC/src/lib/avsddac.db /home/nanda/babysoc/VSDBabySoC/src/lib/avsdpll.db }
+    set search_path {/home/nanda/babysoc/VSDBabySoC/src/include /home/nanda/babysoc/VSDBabySoC/src/module/}
+    read_file {sandpiper_gen.vh  sandpiper.vh  sp_default.vh  sp_verilog.vh clk_gate.v rvmyth.v rvmyth_gen.v vsdbabysoc.v} -autoread -top vsdbabysoc
+    link
+    compile_ultra
+    write_file -format verilog -hierarchy -output /home/nanda/babysoc/VSDBabySoC/output/babysoc_netlist.v
+    report_qor > qor.txt
+    pwd
+    write_file -format ddc -hierarchy -output /home/nanda/babysoc/VSDBabySoC/output/babysoc.ddc
+    history > history.tcl
+
 
 read all the design 
 
@@ -688,6 +703,13 @@ read all the design
 link the design:
 
 ![image](https://github.com/user-attachments/assets/65511bce-1928-40bd-88c8-98e674c892b4)
+
+    report_qor
+    
+![image](https://github.com/user-attachments/assets/3ed831d5-2d76-4f8f-8292-86b4a8d04076)
+
+![image](https://github.com/user-attachments/assets/2e4b8bed-4195-444b-b18b-b4574f6fd06f)
+
 
 
 
