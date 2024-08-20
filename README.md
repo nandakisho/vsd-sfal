@@ -4,31 +4,31 @@
 Install yosys, iverilog and gtkwave </summary>
 1.1: install yosys
 
-$ sudo apt-get update
+    $ sudo apt-get update
 
 
-$ git clone https://github.com/YosysHQ/yosys.git
+    $ git clone https://github.com/YosysHQ/yosys.git
 
 
-$ cd yosys
+    $ cd yosys
 
 
-$ sudo apt install make (If make is not installed please install it) 
+    $ sudo apt install make (If make is not installed please install it) 
 
 
-$ sudo apt-get install build-essential clang bison flex \
+    $ sudo apt-get install build-essential clang bison flex \
     libreadline-dev gawk tcl-dev libffi-dev git \
     graphviz xdot pkg-config python3 libboost-system-dev \
     libboost-python-dev libboost-filesystem-dev zlib1g-dev
 
     
-$ make config-gcc
+    $ make config-gcc
 
 
-$ make 
+    $ make 
 
 
-$ sudo make instal
+    $ sudo make instal
 
 
 yosys:
@@ -40,10 +40,10 @@ yosys:
 1.2: install icarus-iverilog
 
 
-sudo apt-get update
+    sudo apt-get update
 
 
-sudo apt-get install iverilog
+    sudo apt-get install iverilog
 
 
 ![Screenshot from 2024-07-23 02-51-13](https://github.com/user-attachments/assets/2141a391-6055-44f6-965e-6fbb0829239e)
@@ -52,10 +52,10 @@ sudo apt-get install iverilog
 1.3: install gtkwave
 
 
-sudo apt-get update
+    sudo apt-get update
 
 
-sudo apt install gtkwave
+    sudo apt install gtkwave
 
 
 ![Screenshot from 2024-07-23 02-56-14](https://github.com/user-attachments/assets/b135e337-7015-41c2-98a5-b90ea0192c4a)
@@ -64,10 +64,10 @@ sudo apt install gtkwave
 1.4: Iverilog:
 
 
-     Used to verify the rtl code for basic gates, adders, multipliers, adders etc. 
-     All the verilog codes have assosciated Test bench. 
-     Iverilog uses two arguments to dump a intermediate a.out file, which can be run in terminal to get the the VCD file.
-     VCD: Value change dump
+Used to verify the rtl code for basic gates, adders, multipliers, adders etc. 
+All the verilog codes have assosciated Test bench. 
+Iverilog uses two arguments to dump a intermediate a.out file, which can be run in terminal to get the the VCD file.
+VCD: Value change dump
      
  ![Screenshot from 2024-07-23 03-01-24](https://github.com/user-attachments/assets/060e9b70-54c1-46b8-95a4-5f03f40a3157)
 
@@ -85,33 +85,40 @@ Snippet from Test Bench to verify the output of counter:
 
 YOSYS: The open source synthesizer tool
 
-
 ![Screenshot from 2024-07-23 02-54-34](https://github.com/user-attachments/assets/78bd9e4a-dd80-4830-8b0e-3d92c5e3b760)
 
 commands used: in order
 
 Read Liberty: The Infamous .lib file. Lib used here is sky130 typical library. P: Typical T:25 V:1.8v
+
     read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
 
 Read verilog: path to vrilog file mentioned here
+
      read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_counter.v 
 
 Yosys command to synthesize the deign under test to generic tech, irrespective og the sky130nm tech
+
     synth -top good_counter 
 
 Tech mapping to sky130nm cells, This gives us data on what kind of cells were handpicked from sky130 lib
+
     abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
 
 SHOW: command use to view the dumped schematic/logic, in its Heirachical or flat nature
+
     show 
 
 Write the gate level netlist (Heirarchical netlist), which can be used further for Placement and Route activites.
+
     write_verilog -noattr good_counter_ghnetlist.v
 
 Flatten: Command used to get flat netlist.
+
     flatten
 
 Write out the gate level netlist for the flatten netlist
+
     write_verilog -noattr good_counter_gfnetlist.v
 
 ![Screenshot from 2024-07-23 03-08-18](https://github.com/user-attachments/assets/3403b482-1a57-475e-b0f9-608b9d7f68e5)
@@ -134,16 +141,22 @@ Sky130 lib snippet:
 
 
 Hierarchy vs Flat netlist: .v file used: multiple_modules.v
-read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/multiple_modules.v 
-synth -top multiple_modules 
-show multiple_modules 
-abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+
+
+    read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/multiple_modules.v 
+    synth -top multiple_modules 
+    show multiple_modules 
+    abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    
 
 synth -top multiple_modules: return defaults Heirarchy enabled design.
+
 ![Screenshot from 2024-07-25 02-04-32](https://github.com/user-attachments/assets/754cb398-32e9-48a0-a4a2-20554d602049)
 
+
 flatten: command used to get Flat netlist
+
 ![Screenshot from 2024-07-25 02-08-17](https://github.com/user-attachments/assets/ed1ff579-4fd1-4386-814f-e3a0590bdf98)
 
 Submodule level synthesis:
@@ -235,7 +248,9 @@ Verilog snippet:
 OR gate Implemented:
 
 
-show: before opt_purge -clean
+show: before
+
+    opt_purge -clean
 
 ![Screenshot from 2024-07-27 22-40-36](https://github.com/user-attachments/assets/cd1ac00e-d776-4280-be68-f02e32715a3e)
 
@@ -334,8 +349,8 @@ gate level netlist:
 </details>
 
 <details>
-<summary>
-GLS: Gate level Simulation </summary>
+<summary> GLS: Gate level Simulation </summary>
+    
 ## caveats observed in verilog coding that will affect GLS mismtach.
 1. sensitivity level mismtach
 2. blocking and non blocking mismatch
@@ -380,16 +395,16 @@ commands used:
 
 Yosys:
 
-read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_mux.v 
-synth -top good_mux 
-abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-show 
-write_verilog -noattr good_mux_gnetlist.v
+    read_liberty -lib ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    read_verilog ../../../sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_mux.v 
+    synth -top good_mux 
+    abc -liberty ../../../sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    show 
+    write_verilog -noattr good_mux_gnetlist.v
 
 iverilog and gtkwave commands used:
 
-iverilog ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/primitives.v ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/sky130_fd_sc_hd.v ../yosys/projects/gls_lab/good_mux_gnetlist.v ../sky130RTLDesignAndSynthesisWorkshop/verilog_files/tb_good_mux.v
+    iverilog ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/primitives.v ../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/sky130_fd_sc_hd.v ../yosys/projects/gls_lab/good_mux_gnetlist.v         ../sky130RTLDesignAndSynthesisWorkshop/verilog_files/tb_good_mux.v
 
 gtkwave tb_good_mux.vcd
 
@@ -432,6 +447,7 @@ yosys:
 
 <summary>
 DC: SYNOPSYS DESIGN COMPILER</summary>
+
 ## Sythesis tool: Used to convert RTL to gate level netlist.
 
 ![Screenshot 2024-07-29 at 10 52 06 PM](https://github.com/user-attachments/assets/3c27aa9d-e74b-4655-b5a1-e8e0d0f2e197)
@@ -439,9 +455,9 @@ Source: UC Davis
 
 
 ### Inputs to DC:
-1. .lib/.db: Sky130 file
-2. .SDC: Synopsys Constraint file.
-3. .v: RTL netlist
+.lib/.db: Sky130 file
+.SDC: Synopsys Constraint file.
+.V: RTL netlist
 
 ### Outputs:
 Synthesis Qor
@@ -452,15 +468,17 @@ Lab1: Flop with Latch enable
 
 Commands used:
 csh #to enter C Shell
-DC_SHELL #to open Design compiler
+
+    DC_SHELL #to open Design compiler
 
 ![Screenshot 2024-07-29 at 11 00 42 PM](https://github.com/user-attachments/assets/94e13719-03e0-4572-9fae-e84fc9769a98)
 
 .synopsys_dc.setup file: to initialize the libraries
 
 #setting target and link library to defualy sky 130nm db#
-set target_library ../lib/sky130_fd_sc_hd__tt_025C_1v80.db
-set link_library { * ../lib/sky130_fd_sc_hd__tt_025C_1v80.db}
+
+    set target_library ../lib/sky130_fd_sc_hd__tt_025C_1v80.db
+    set link_library { * ../lib/sky130_fd_sc_hd__tt_025C_1v80.db}
 
 commands to write verilog and ddc file:
 
@@ -476,9 +494,9 @@ gate level netlist:
 
 commands used:
 
-csh
-design_vision
-read_ddc lab1.ddc
+    csh
+    design_vision
+    read_ddc lab1.ddc
 
 ![Screenshot 2024-07-29 at 11 11 06 PM](https://github.com/user-attachments/assets/7215e8a1-6364-435e-95b3-db7aff6f530a)
 
@@ -625,7 +643,7 @@ Serial Peripheral Interface it a protocol used for communication of data between
 
 Post GLS simulation is performed by synthesizing netlist using dc_shell and verify the simulation using iverilog.
 
-pip3 install pyyaml click sandpiper-saas
+    pip3 install pyyaml click sandpiper-saas #install sandpiper to synthesize tlv files
 
 SandPiper SaaS Edition runs Redwood EDA's SandPiper™ TL-Verilog compiler as a microservice in the cloud to support low-overhead and zero-cost open-source development using commercial-grade capabilities. This simple Python script provides a convenient command-line interface to the microservice. It is used by exciting projects such as WARP-V and 1st CLaaS.
 
@@ -677,9 +695,7 @@ commands used to convert:.lib to .db
 
 genearte neccesary .vh files: make pre_synth_sim
 
-    iverilog -o output/pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module
-
-![image](https://github.com/user-attachments/assets/6a458044-eb41-407e-b7f7-354956299443)
+    sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
 
 using dc_shell to synthesize the netlist:
 
@@ -696,11 +712,12 @@ using dc_shell to synthesize the netlist:
     history > history.tcl
 
 
-read all the design 
+read the design collaterals
 
 ![image](https://github.com/user-attachments/assets/6e236fb6-0e37-4d6f-bfd4-8874ed28d4a1)
 
 link the design:
+    link
 
 ![image](https://github.com/user-attachments/assets/65511bce-1928-40bd-88c8-98e674c892b4)
 
