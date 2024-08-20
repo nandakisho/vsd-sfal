@@ -588,32 +588,104 @@ source: https://github.com/Devipriya1921/VSDBabySoC_ICC2
 
 
 Problem statement
+
 This work discusses the different aspects of designing a small SoC based on RVMYTH (a RISCV-based processor). This SoC will leverage a PLL as its clock generator and controller and a 10-bit DAC as a way to talk to the outside world. Other electrical devices with proper analog input like televisions, and mobile phones could manipulate DAC output and provide users with music sound or video frames. At the end of the day, it is possible to use this small fully open-source and well-documented SoC which has been fabricated under Sky130 technology, for educational purposes.
 
 Design elements used in BabySoC:
- 1.RVMYTH
- 2.PLL
- 3.DAC
- 4.SPI
+1.RVMYTH
+2.PLL
+3.DAC
+4.SPI
 
-RVMYTH: It is basic RISCV CPU developed by Steve Hovver and VSD sysytem deisgn to comprehend the knowledge of a simple cpu and its working mechanism, it is a 5bit cpu machine.
-        All these designs are open source and modelled using their git repos, which are open source.
+RVMYTH: 
 
-PLL: The phase-locked loop (PLL) block is a feedback control system that automatically adjusts the phase of a locally generated signal to match the phase of an input signal. PLLs operate by producing an oscillator frequency to match the frequency of an input signal. In 
-     this locked condition, any slight change in the input signal first appears as a change in phase between the input signal and the oscillator frequency. This phase shift then acts as an error signal to change the frequency of the local PLL oscillator to match the 
-     input signal. The locking-onto-a-phase relationship between the input signal and the local oscillator accounts for the name phase-locked loop. PLLs are often used in high-speed communication applications.
+It is basic RISCV CPU developed by Steve Hovver and VSD sysytem deisgn to comprehend the knowledge of a simple cpu and its working mechanism, it is a 5bit cpu machine.
+All these designs are open source and modelled using their git repos, which are open source.
 
-     Source: Intel
+PLL:
 
-DAC: It is a Digital to analog converted ubiquitously used across multiple IC domains, they mainly serve in conerting all digital signals to analog and helps with communicating either with external world or Intra chip.
+The phase-locked loop (PLL) block is a feedback control system that automatically adjusts the phase of a locally generated signal to match the phase of an input signal. PLLs operate by producing an oscillator frequency to match the frequency of an input signal. In 
+this locked condition, any slight change in the input signal first appears as a change in phase between the input signal and the oscillator frequency. This phase shift then acts as an error signal to change the frequency of the local PLL oscillator to match the 
+input signal. The locking-onto-a-phase relationship between the input signal and the local oscillator accounts for the name phase-locked loop. PLLs are often used in high-speed communication applications.
 
-SPI: Serial Peripheral Interface it a protocol used for communication of data between devices, a synchronous mechanism with full duplex interface capability, maily serves intra chip.
+Source: Intel
+
+DAC: 
+
+It is a Digital to analog converted ubiquitously used across multiple IC domains, they mainly serve in conerting all digital signals to analog and helps with communicating either with external world or Intra chip.
+
+SPI: 
+
+Serial Peripheral Interface it a protocol used for communication of data between devices, a synchronous mechanism with full duplex interface capability, maily serves intra chip.
 
 </details>
 
 <details>
 <summary> Post GLS simulation </summary>
+
+Post GLS simulation is performed by synthesizing netlist using dc_shell and verify the simulation using iverilog.
+
+pip3 install pyyaml click sandpiper-saas
+
+SandPiper SaaS Edition runs Redwood EDA's SandPiper™ TL-Verilog compiler as a microservice in the cloud to support low-overhead and zero-cost open-source development using commercial-grade capabilities. This simple Python script provides a convenient command-line interface to the microservice. It is used by exciting projects such as WARP-V and 1st CLaaS.
+
+A TL-Verilog-enhanced open-source Verilog development flow might also make use of the similarly-light-weight makerchip-app for TL-Verilog editing.
+
+source: https://pypi.org/project/sandpiper-saas/
+
+DC_Shell:
+
+Dc shell needs propreitarry .DB file in place of .lib file to do mappping.
+The git clone of https://github.com/manili/VSDBabySoC.git has .lib files of all the deisgn elements.
+
+![image](https://github.com/user-attachments/assets/c844bee0-dd92-4502-bd05-332057df81fe)
+
+we need to convert these .lib to .db using lc_shell: A Synopsys library compiler tool.
+
+![image](https://github.com/user-attachments/assets/5d661e3e-fd06-48d3-b4e5-1a21596e7ac2)
+
+commands used to convert: .lib to .db
+
+fix all the errors per the log file: 
+
+![image](https://github.com/user-attachments/assets/f694d4a0-b52c-47f8-8151-fd617bcd0f33)
+   
+after fixing the errors:
+
+![image](https://github.com/user-attachments/assets/1d7f16e6-dcb4-4dd0-96b6-60096ac39bd1)
+
+Note: Warnings can be ignored at this stage.
+
+using wget command to import latest lib from git repo
+
+![image](https://github.com/user-attachments/assets/a605a410-2eac-4fa5-9ca8-463b6b30dd8e)
+
+
+
+commands used to convert:.lib to .db
+1   read_lib avsddac.lib
+2  write_lib avsddac.lib -format db -output avsddac.db
+3  write_lib avsddac.lib -format db -output avsddac.db
+4  read_lib avsddac.lib
+5  write_lib avsddac -format db -output avsddac.db
+6  read_lib avsdpll.lib
+7  write_lib avsdpll -format db -output avsdpll.db
+8  read_lib sky130_fd_sc_hd__tt_025C_1v80.lib
+9  write_lib sky130_fd_sc_hd__tt_025C_1v80 -format db -output sky130_fd_sc_hd__tt_025C_1v80.db
+
+
+genearte neccesary .vh files: make pre_synth_sim
+
+![image](https://github.com/user-attachments/assets/6a458044-eb41-407e-b7f7-354956299443)
+
     
+
+
+
+
+
+
+
 </details>
 
 
