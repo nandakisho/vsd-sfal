@@ -636,6 +636,28 @@ SPI:
 
 Serial Peripheral Interface it a protocol used for communication of data between devices, a synchronous mechanism with full duplex interface capability, maily serves intra chip.
 
+## Simulating babysoc using Iverilog and gtkwave
+###pre synth simulation
+
+    sudo apt install make python python3 python3-pip git iverilog gtkwave docker.io
+    sudo chmod 666 /var/run/docker.sock
+    cd ~
+    pip3 install pyyaml click sandpiper-saas #pip3 is a pyhton install application
+
+clone vsdbabysoc.git from repo
+    git clone https://github.com/manili/VSDBabySoC.git
+
+Use make command to generate .V files:
+
+    cd VSDBabySoC
+    make pre_synth_sim
+
+Work around for missing sand-piper on VM's:
+    source ~/.venv/bin/activate
+Execute 
+    sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
+It will generate following .v files rvmyth.v and rvmyth_gen.v.
+
 </details>
 
 <details>
