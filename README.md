@@ -771,6 +771,22 @@ link the design:
 
 ![image](https://github.com/user-attachments/assets/2e4b8bed-4195-444b-b18b-b4574f6fd06f)
 
+using Iverilog to get post synth simulation vcd file.
+
+    iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 -o ./output/post_synth_sim.out ./src/gls_model/primitives.v ./src/gls_model/sky130_fd_sc_hd.v ./output/babysoc_netlist1.v ./src/module/avsdpll.v ./src/module/avsddac.v ./src/module/testbench.v
+
+post synth sim:
+
+![image](https://github.com/user-attachments/assets/2e8c1095-f7bc-4014-ac60-c8b642759435)
+
+
+pre synth sim:
+
+![Screenshot from 2024-08-21 02-45-06](https://github.com/user-attachments/assets/db30e618-563e-4b0b-a136-7a239c1ffaf0)
+
+
+    
+
 
 
 
