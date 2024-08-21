@@ -653,10 +653,32 @@ Use make command to generate .V files:
     make pre_synth_sim
 
 Work around for missing sand-piper on VM's:
+
+![Screenshot from 2024-08-21 02-59-24](https://github.com/user-attachments/assets/7737c2e9-d854-4114-b6a7-0c4355b0b576)
+
+    python3 -m venv .venv
     source ~/.venv/bin/activate
-Execute 
+    
+![Screenshot from 2024-08-21 03-08-45](https://github.com/user-attachments/assets/f5e95f45-14c9-4437-b39b-4e932f432394)
+
+    python3 -m install sandpiper-saas    
+
+Execute the command:
+
     sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
+    
 It will generate following .v files rvmyth.v and rvmyth_gen.v.
+
+
+view the ouput vcd file:
+    cd /home/nkm/Desktop/vsd-sfal/VSDBabySoC/output/pre_synth_sim/pre_synth_sim.vcd
+
+waveform: DAC output is verified along with out
+
+![Screenshot from 2024-08-21 02-45-06](https://github.com/user-attachments/assets/db30e618-563e-4b0b-a136-7a239c1ffaf0)
+
+Data type used to get the outputs: D[9:0]: Decimal | out: Analog:step
+
 
 </details>
 
