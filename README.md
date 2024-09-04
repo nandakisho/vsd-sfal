@@ -785,20 +785,37 @@ pre synth sim:
 ![Screenshot from 2024-08-21 02-45-06](https://github.com/user-attachments/assets/db30e618-563e-4b0b-a136-7a239c1ffaf0)
 
 
-    
-
-
-
-
-    
-
-
-
-
-
-
-
 </details>
+
+<details>
+<summary>
+using PT to analyze the timing corners. </summary>
+## PVT: Process Voltage Temperature##
+### essential for simulating any IC for different weather conditions in order to abe able to work efficiently and be reliable.
+    IC's are tested from -40C to +125C using industry standard tools and 
+coomand used to convert libs to db
+
+    
+    # convert_lib_to_db.tcl
+    set lib_files_dir "/home/nanda/babysoc/VSDBabySoC/src/lib/skywater-pdk-libs-sky130_fd_sc_hd/timing";
+    set db_output_dir "/home/nanda/babysoc/VSDBabySoC/src/lib/timinglibs";
+    foreach lib_file [glob -nocomplain $lib_files_dir/*.lib] {
+    set base_name [file rootname [file tail $lib_file]]
+    set db_file "$db_output_dir/${base_name}.db"
+
+    if {[llength [list_libs]] > 0} {
+        remove_lib [lindex [list_libs] 0]
+    }
+
+    read_lib $lib_file
+
+    write_lib $base_name -format db -output $db_file
+
+    if {[llength [list_libs]] > 0} {
+        remove_lib [lindex [list_libs] 0]
+    }
+}
+exit
 
 
 
