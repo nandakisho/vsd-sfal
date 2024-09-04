@@ -789,11 +789,19 @@ pre synth sim:
 
 <details>
 <summary>
-using PT to analyze the timing corners. </summary>
+Using PT to analyze the timing corners. </summary>
+    
 ## PVT: Process Voltage Temperature##
+
 ### essential for simulating any IC for different weather conditions in order to abe able to work efficiently and be reliable.
-    IC's are tested from -40C to +125C using industry standard tools and 
-coomand used to convert libs to db
+IC's are tested from -40C to +125C using industry standard tools and fabricated with advance packaging solutions like quad package, 2.5D etc.
+
+We are using SKY130PDK PVT LIBS in our design
+
+
+(https://github.com/efabless/skywater-pdk-libs-sky130_fd_sc_hd/tree/master/timing)
+
+TCL script used to convert libs to db
 
     
     # convert_lib_to_db.tcl
@@ -814,8 +822,85 @@ coomand used to convert libs to db
     if {[llength [list_libs]] > 0} {
         remove_lib [lindex [list_libs] 0]
     }
-}
-exit
+    }
+    exit
+
+<img width="1283" alt="Screenshot 2024-09-03 at 9 37 09 PM" src="https://github.com/user-attachments/assets/6ac22f5b-6b22-4890-8720-742ee896a68e">
+
+open PT_SHELL
+
+TCL script used in PT_SHELL
+
+    set m1 ""
+    set pvt ""
+    set wns ""
+    set whs ""
+    set FH [open report_timing_prime_time.rpt w]
+    puts $FH "PVT_Corner\tWNS\tWHS"
+     set lib_files [glob -directory /home/nanda/babysoc/VSDBabySoC/src/lib/timinglibs/ -type f *.db]
+    foreach lib_file_paths $lib_files {
+	regexp {.*\/sky130_fd_sc_hd__(.*)\.db$} $lib_file_paths m1 pvt
+    set link_path "* /home/nanda/babysoc/VSDBabySoC/src/lib/avsddac.db /home/nanda/babysoc/VSDBabySoC/src/lib/avsdpll.db "
+    lappend link_path $lib_file_paths
+
+    read_verilog "/home/nanda/babysoc/VSDBabySoC/output/babysoc_sdc_gnet.v"
+    current_design vsdbabysoc
+
+    link_design
+    read_sdc "/home/nanda/babysoc/VSDBabySoC/babysoc.sdc"
+    read_parasitics "/home/nanda/babysoc/VSDBabySoC/output/empty.spef"
+
+
+    set wns [get_attribute [get_timing_paths -delay_type max -max_paths 1] slack]
+    set whs [get_attribute [get_timing_paths -delay_type min -max_paths 1] slack]
+
+    puts $FH "$pvt\t$wns\t$whs"
+
+    remove_annotated_parasitics -all
+    reset_design
+    remove_design -all
+    remove_lib -all
+    }
+    close $FH
+
+
+Timing info for different corners
+
+PVT_Corner	        WNS	                WHS
+
+ff_100C_1v65    	2.554515    	-0.250917
+
+ff_100C_1v95    	4.066801    	-0.304045
+
+ff_n40C_1v56    	0.77814        	-0.208451
+
+ff_n40C_1v65    	1.911201    	-0.244908
+
+ff_n40C_1v76    	2.930052    	-0.275657
+
+ff_n40C_1v95    	4.091851    	-0.312528
+
+ss_100C_1v40    	-18.621580    	0.405345
+
+ss_100C_1v60    	-9.373999    	0.142039
+
+ss_n40C_1v28    	-64.063217    	1.329605
+
+ss_n40C_1v35    	-41.196972    	0.847522
+
+ss_n40C_1v40    	-31.193745    	0.624912
+
+ss_n40C_1v44    	-25.407854    	0.490901
+
+ss_n40C_1v60    	-12.109005    	0.162826
+
+ss_n40C_1v76    	-5.881881    	0.003838
+
+tt_025C_1v80    	0.439206    	-0.190414
+
+tt_100C_1v80    	0.593517    	-0.185542
+
+
 
 
 
