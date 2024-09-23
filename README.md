@@ -902,12 +902,125 @@ Graph for WHS: Worst hold slack(hold)
 Physical design flow
 </summary>
 	
+Collaterals needed to start Physical Design.
+
+1. .Verilog: RTL netlist
+   
+3. .Lib : logical library
+   
+5. .SDC : Synopsys design constraints for constarining the design
+   
+7. .LEF/.DEF : abstract and detailed view of Cells/Macros/deisgn
+   
+9. .TF : Technology file usually from Foundry
+    
+11. .UPF : Unified power format aka low power congig file.
+
+
+Perform Sanity checks on all these inputs file and start the PnR flow.
+
+Steps involced in PnR:
+
+****Synthesis** ----------> Floorplan ----------> Placement ----------> CTS ----------> Routing ---------> Sign Off.**
+
+**Synthesis:**
+
+Convert RTL to Synthesized netlist using tool commands and obtain gate level netlist w.r.t .lib used
+
+verify reports like timing, Qor, WLM etc.
+
+completeness of Synthesis N/L, Updated SDC, updated DFT, updated UPF
+
+**Floorplan:**
+
+Real Estate of the design.
+
+Top to Bottom or vice versa approach.
+
+shape creation
+
+Macro placement
+
+I/O placement
+
+Power planning
+
+Partitioning
+
+BUS Planning, Repeater/FT planning.
+
+Physical cell usage
+
+Finalize 
+
+Verify reports like Timing,QoR, Uril number, PG planning/routing
+
+
+**Placement:**
+
+Placment of Std cells in the designeated core area.
+
+Coarse placment
+
+Detailed placment
+
+Place opt
+
+Verify Reports: Timing, QoR, HFNS, Scan Congig, Util number, Legality, Congestion etc
+
+**CTS:**
+
+Building good CTS.
+
+good CTS plannning like CTmesh, H-Tree, X-tree, Binary.
+
+Good LOL for Clock drop off points in the design.
+
+Source, Network Latency
+
+Skew and Insertion delay.
+
+Usage of Clock buffers and Inverters.
+
+CLK routing and its impact on placed std cells.
+
+Verify Reports: QoR, Timing, CT numbers, Util number etc
+
+**Routing:**
+
+Global Routing
+
+Detailed Routing
+
+Search and Repair
+
+Grid based Algorithms
+
+Routable design
+
+Verify Reports: Qor, LVS, DRC, Timing etc
+
+**Sign Off:**
+
+This is a very effective and strong step which can be used at any step in PnR to make sure to have a solid IC.
+
+Formal Verification
+
+Physical Verification
+
+CLP: Conformal Low Power
+
+IR analysis
+
+STA: Static Timing Analysis
+
+
+	
 PnR flow using open source Openlane flow, available for free of cost and can be used to get a GDS file, which can be fabricated using SKY130PDK or custome PDK's.
 
-PnR flow:
+**PnR flow:**
 
 ![image](https://github.com/user-attachments/assets/99c5ae41-527a-4a15-b60d-51d32bd8aac2)
-
 source: Google
 
 
@@ -1001,7 +1114,11 @@ source: Google
 
 
  Source:	https://github.com/efabless/openlane2.git
-</details>
+
+
+In our test case we are using Picorv32a design:
+
+The PicoRV32A design in OpenLane is an implementation of the PicoRV32, a minimalistic and highly configurable open-source RISC-V CPU core. It is a small, compact, 32-bit CPU that implements the RISC-V instruction set architecture (ISA). Here's a brief overview of what the design does within OpenLan
 
 
 
