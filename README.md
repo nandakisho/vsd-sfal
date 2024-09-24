@@ -1216,6 +1216,18 @@ Characterization Flow:
 ![image](https://github.com/user-attachments/assets/936cf568-9faf-46fd-847c-6ab4da95411a)
 
 
+**Spice Deck:**
+
+![image](https://github.com/user-attachments/assets/820efdb7-5b37-4555-afa0-2903dcb00813)
+![image](https://github.com/user-attachments/assets/f0e62d6e-a132-414d-9eeb-b359679c891e)
+![image](https://github.com/user-attachments/assets/e6cf1278-9c1e-419c-a258-d6f5a3b66e1f)
+![image](https://github.com/user-attachments/assets/141cd660-0eda-40f3-8065-49dfcc76233c)
+
+
+
+
+
+
 </details>
 
 
