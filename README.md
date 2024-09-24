@@ -1162,7 +1162,7 @@ M1 and M2 layers are used for STD cells routing and the rest layers can be used 
 
 These STD cells need to sit in UNIT SITE, that is the minimum cell size between standard cell rows and any cell of any flavour need to be in multiples of minimum unit site.
 
-Inputs:
+**Inputs:**
 
 PDK
 
@@ -1171,6 +1171,23 @@ DRC and LVS Deck
 Spice models
 
 library and user defined specs: Metaly layers used, Operating voltage for the IC/Design, Pin Location.
+
+**Design Steps:**
+
+Circuit Design: CMOS gate level implememtation and W/L ratio of pmos and nmos.
+
+Layout Design: Layout for the Circuit implemeted. The Euler's path and stick diagram
+
+Characterization: 
+
+
+Outputs:
+CDL: Circuit Description language.
+
+![image](https://github.com/user-attachments/assets/cd008980-3ffe-4e64-9bff-4d41d6a65a0e)
+![image](https://github.com/user-attachments/assets/95cfd816-e6b2-41da-b438-c9bb65571d32)
+
+
 
 </details>
 
