@@ -931,6 +931,14 @@ verify reports like timing, Qor, WLM etc.
 
 completeness of Synthesis N/L, Updated SDC, updated DFT, updated UPF
 
+Snippets:
+
+![image](https://github.com/user-attachments/assets/e8a3a7b1-fb6a-4c3d-9636-ec40efd76d09)
+
+DFF covergae = 1613/18036= 8.94%
+
+
+
 **Floorplan:**
 
 Real Estate of the design.
@@ -955,6 +963,15 @@ Finalize
 
 Verify reports like Timing,QoR, Uril number, PG planning/routing
 
+Snippets:
+
+![image](https://github.com/user-attachments/assets/4d87bd71-ac93-4ab8-a5e6-b1f5bb590e7e)
+![image](https://github.com/user-attachments/assets/a3281c91-9a0a-4f49-b830-7c740628cc78)
+![image](https://github.com/user-attachments/assets/b07c6e7d-46ec-43b1-969b-047e827db779)
+
+
+
+
 
 **Placement:**
 
@@ -967,6 +984,12 @@ Detailed placment
 Place opt
 
 Verify Reports: Timing, QoR, HFNS, Scan Congig, Util number, Legality, Congestion etc
+
+Snippets:
+
+![image](https://github.com/user-attachments/assets/f7d5b3db-3831-491f-82be-bf9234e8a0e5)
+![image](https://github.com/user-attachments/assets/81775439-05ab-4a63-8d44-ea30ea135b9f)
+
 
 **CTS:**
 
@@ -985,6 +1008,9 @@ Usage of Clock buffers and Inverters.
 CLK routing and its impact on placed std cells.
 
 Verify Reports: QoR, Timing, CT numbers, Util number etc
+
+
+
 
 **Routing:**
 
@@ -1112,14 +1138,31 @@ source: Google
 
 : Equivalence Check (Alpha) / Yosys EQY
 
-
- Source:	https://github.com/efabless/openlane2.git
+Source:	https://github.com/efabless/openlane2.git
 
 
 In our test case we are using Picorv32a design:
 
-The PicoRV32A design in OpenLane is an implementation of the PicoRV32, a minimalistic and highly configurable open-source RISC-V CPU core. It is a small, compact, 32-bit CPU that implements the RISC-V instruction set architecture (ISA). Here's a brief overview of what the design does within OpenLan
+The PicoRV32A design in OpenLane is an implementation of the PicoRV32, a minimalistic and highly configurable open-source RISC-V CPU core. It is a small, compact, 32-bit CPU that implements the RISC-V instruction set architecture (ISA).
 
+</details>
+
+<details>
+<summary>Standard Cell Characterization:</summary>
+	
+![image](https://github.com/user-attachments/assets/025b0c99-7dc1-41c4-a7e4-722a4009b805)
+![image](https://github.com/user-attachments/assets/b6a61163-cb9f-4efa-b431-ef7c2f442b59)
+
+source: google
+
+	
+All Standard cells are characterized using SPICE models. These standard cells are implemented using NAND or NOR gates, which are called universal gates. The cell desnsity and node technology gives a hint on which gates can be used to implement the functionality.
+
+M1 and M2 layers are used for STD cells routing and the rest layers can be used for CLK, SIGNAL, POWER Routing.
+
+These STD cells need to sit in UNIT SITE, that is the minimum cell size between standard cell rows and any cell of any flavour need to be in multiples of minimum unit site.
+
+</details>
 
 
 
