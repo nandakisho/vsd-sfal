@@ -1162,6 +1162,16 @@ M1 and M2 layers are used for STD cells routing and the rest layers can be used 
 
 These STD cells need to sit in UNIT SITE, that is the minimum cell size between standard cell rows and any cell of any flavour need to be in multiples of minimum unit site.
 
+Inputs:
+
+PDK
+
+DRC and LVS Deck
+
+Spice models
+
+library and user defined specs: Metaly layers used, Operating voltage for the IC/Design, Pin Location.
+
 </details>
 
 
