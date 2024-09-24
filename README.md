@@ -1180,13 +1180,40 @@ Layout Design: Layout for the Circuit implemeted. The Euler's path and stick dia
 
 Characterization: 
 
+Use RC extraction from the layouts and genearate Timing, Noise, Power .libs function
+
 
 Outputs:
 CDL: Circuit Description language.
+GDS2, LEF, Extracted Spice netlist.
 
 ![image](https://github.com/user-attachments/assets/cd008980-3ffe-4e64-9bff-4d41d6a65a0e)
 ![image](https://github.com/user-attachments/assets/95cfd816-e6b2-41da-b438-c9bb65571d32)
 
+
+Characterization Flow:
+
+1.Read Model File from Foundry
+
+2.Read Extracted spice netlist
+
+3.understand Logic under test
+
+4.Read subcircuit of DUT
+
+5.Attach power sources
+
+6.Apply stimulus
+
+7.Apply caps based on NLDM and CCS
+
+8. Neccesary simulation commands based on .DC and .trans simulation
+
+9. Feed 1 thru 8 to "GUNA": Characterization software.
+
+10. GUNA genereates: Timing, Power and Noise characterization.
+
+![image](https://github.com/user-attachments/assets/936cf568-9faf-46fd-847c-6ab4da95411a)
 
 
 </details>
