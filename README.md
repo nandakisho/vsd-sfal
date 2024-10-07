@@ -1234,6 +1234,9 @@ using MAGIC to generate spice cir to analyse slew, Rise and Fall delays.
  	ext2spice cthresh 0 rthresh 0: from ext to spice for RC parasitics
   	ext2spice: to get spice model which can be used to run in ngspice
 
+Snippet from Wavefoem:
+
+![image](https://github.com/user-attachments/assets/2e0462cb-ea02-4979-a24c-c0037dd3f5ba)
 
 Input rise trainsition: 80% of input - 20% of input
 : 2.24598 - 2.1821
