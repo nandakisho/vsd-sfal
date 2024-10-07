@@ -1223,6 +1223,28 @@ Characterization Flow:
 ![image](https://github.com/user-attachments/assets/e6cf1278-9c1e-419c-a258-d6f5a3b66e1f)
 ![image](https://github.com/user-attachments/assets/141cd660-0eda-40f3-8065-49dfcc76233c)
 
+#Sky130INV characterization
+
+Inverter layout using MAGIC:
+
+![image](https://github.com/user-attachments/assets/7239b7c8-326f-4d33-8c68-74fd9897d5c7)
+
+using MAGIC to generate spice cir to analyse slew, Rise and Fall delays.
+	extract all: command used to get ext file
+ 	ext2spice cthresh 0 rthresh 0: from ext to spice for RC parasitics
+  	ext2spice: to get spice model which can be used to run in ngspice
+
+
+Input rise trainsition: 80% of input - 20% of input
+: 2.24598 - 2.1821
+: 0.06388ns = 63.8ps
+	    
+
+Output fall Trainsition: 20% of output - 80% of output
+:4.09529 - 4.0527
+: 0.04253 ns = 42.53ps
+      
+
 
 
 
