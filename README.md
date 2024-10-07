@@ -1223,7 +1223,7 @@ Characterization Flow:
 ![image](https://github.com/user-attachments/assets/e6cf1278-9c1e-419c-a258-d6f5a3b66e1f)
 ![image](https://github.com/user-attachments/assets/141cd660-0eda-40f3-8065-49dfcc76233c)
 
-#Sky130INV characterization
+# Sky130INV characterization
 
 Inverter layout using MAGIC:
 
@@ -1234,7 +1234,22 @@ using MAGIC to generate spice cir to analyse slew, Rise and Fall delays.
  	ext2spice cthresh 0 rthresh 0: from ext to spice for RC parasitics
   	ext2spice: to get spice model which can be used to run in ngspice
 
-Snippet from Wavefoem:
+INV spice model snippet:
+![image](https://github.com/user-attachments/assets/6f9e2888-dac6-4ee0-bde5-1f72fc85f191)
+
+ngspice commands:
+	ngspice sky130_inv.spice
+ 	plot y vs time a
+
+![image](https://github.com/user-attachments/assets/31eaa00e-153a-46e4-99aa-b72f0a9f9ce3)
+
+![image](https://github.com/user-attachments/assets/b44ed917-6acf-474b-8c2d-794594f8baf0)
+
+
+
+
+
+Snippet from Waveform for rise and fall transition:
 
 ![image](https://github.com/user-attachments/assets/2e0462cb-ea02-4979-a24c-c0037dd3f5ba)
 
@@ -1247,6 +1262,10 @@ Output fall Trainsition: 20% of output - 80% of output
 :4.09529 - 4.0527
 : 0.04253 ns = 42.53ps
 
+
+Snippet for Rise and Fall delay:
+
+![image](https://github.com/user-attachments/assets/d469a8c2-0a82-467b-92bb-d6f8e3340b57)
 
 Cell Rise Delay: 50% of output rise - 50% of input fall
 : 2.211107 - 2.15005 = 0.061057ns = 61.05ps
