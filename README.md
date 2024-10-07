@@ -1246,6 +1246,16 @@ Input rise trainsition: 80% of input - 20% of input
 Output fall Trainsition: 20% of output - 80% of output
 :4.09529 - 4.0527
 : 0.04253 ns = 42.53ps
+
+
+Cell Rise Delay: 50% of output rise - 50% of input fall
+: 2.211107 - 2.15005 = 0.061057ns = 61.05ps
+
+Cell Fall Delay: 50% of Output fall - 50% of input rise
+: 4.07771 - 4.05003 = 0.02768ns = 27.68ps
+
+
+#Fixing DRC issues
       
 
 
