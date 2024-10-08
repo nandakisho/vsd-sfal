@@ -1274,7 +1274,38 @@ Cell Fall Delay: 50% of Output fall - 50% of input rise
 : 4.07771 - 4.05003 = 0.02768ns = 27.68ps
 
 
-#Fixing DRC issues
+# Fixing DRC issues
+	wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz 
+	tar xfz drc_tests.tgz
+	cd drc_tests
+	magic -d XR 
+
+ Doc to refer: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#x
+
+ Example 1: poly.mag
+
+ ![image](https://github.com/user-attachments/assets/91f4afeb-fc8f-47c5-9907-9ba9715d5310)
+
+ ![image](https://github.com/user-attachments/assets/8932bb14-a9c0-4f90-999b-f57ca5ad63f9)
+
+ editing tech file, manually adding poly rules for poly.9
+ 
+ ![image](https://github.com/user-attachments/assets/d58401e6-8497-409a-9f7b-a55a2eb4df04)
+
+
+Once tech file is modified, no need to start a new MAGIC session.
+
+Steps to follow:
+	tech load sky130A.tech
+ 	drc check # refreshes the design again
+  	; select area
+   	drc why
+
+
+ 
+
+
+ 
       
 
 
