@@ -1296,10 +1296,64 @@ Cell Fall Delay: 50% of Output fall - 50% of input rise
 Once tech file is modified, no need to start a new MAGIC session.
 
 Steps to follow:
+
 	tech load sky130A.tech
  	drc check # refreshes the design again
   	; select area
    	drc why
+
+
+# using custom inv cell in design:
+
+![image](https://github.com/user-attachments/assets/dc68cb21-ddd2-410d-9d08-9b042cb69da0)
+
+3 essential checks to verify the layout is fine before writing out lef.
+
+1. I/O port must align at the intersection of H and V tracks
+2. WIDTH of the designed cell should be in odd multiples of the grid.
+3. HEIGHT of the designed cell should be odd multiples of the grid.
+4. The reason being to accomodate routing tracks efficiently.
+
+The grid is aligned based on the track info of the design.
+In our case:
+grid 0.46um 0.34um 0.23um 0.17um
+
+![image](https://github.com/user-attachments/assets/cc3a2e7a-fec2-4b61-856c-0570b5c4f151)
+
+Steps before writing LEF:
+
+	goto A
+ 
+ 	select area
+  
+  	what
+   
+   	port class input
+    
+	port use signal
+   	
+   
+click on "edit"
+
+![image](https://github.com/user-attachments/assets/5839f6a9-662d-478a-a0b5-26e852331c17)
+
+
+repeat this for Y, VGND, VPWR
+
+![image](https://github.com/user-attachments/assets/f3166660-99f9-404c-a914-8b653d62baa1)
+
+write lef:
+	lef sky130_vsdinv_nanda.lef
+
+![image](https://github.com/user-attachments/assets/36cc90fe-b176-4447-8c0f-07ad4dacdc1a)
+
+
+
+  	
+
+
+
+
 
 
  
