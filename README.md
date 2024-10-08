@@ -1358,6 +1358,7 @@ Commands used:
 
 
  Params to be added in picorv32a/config.tcl
+ 
 	#set the following in config.tcl
 	set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
 	set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
@@ -1366,7 +1367,45 @@ Commands used:
 	set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
 
  1. run_syntheis:
-    	with default params:
+    with default params:
+	# Synth defaults
+	set ::env(SYNTH_BIN) yosys
+	set ::env(SYNTH_SCRIPT) $::env(SCRIPTS_DIR)/synth.tcl
+	set ::env(SYNTH_NO_FLAT) 0
+	set ::env(SYNTH_SHARE_RESOURCES) 1
+	set ::env(SYNTH_BUFFERING) 1
+	set ::env(SYNTH_SIZING) 0
+	set ::env(SYNTH_MAX_FANOUT) 5
+	set ::env(SYNTH_STRATEGY) "AREA 0"
+	set ::env(SYNTH_ADDER_TYPE) "YOSYS"
+	set ::env(CLOCK_BUFFER_FANOUT) 16
+	set ::env(SYNTH_READ_BLACKBOX_LIB) 0
+	set ::env(SYNTH_TOP_LEVEL) 0
+	set ::env(SYNTH_FLAT_TOP) 0
+	set ::env(IO_PCT) 0.2
+
+	set ::env(BASE_SDC_FILE) $::env(OPENLANE_ROOT)/scripts/base.sdc
+
+add imag1.png here
+
+Timing info:
+
+tns -711.59
+wns -23.89
+
+Goal is to use Synth Strategy to bring wns and tns down:
+
+	prep -design picorv32a -tag 08-10_20-06 -overwrite
+	set ::env(SYNTH_STRATEGY) "DELAY 3"
+	set ::env(SYNTH_SIZING) 1
+	run_synthesis
+ 
+  add image2.png here
+
+  Floorplan:
+  	run_floorplan
+
+    
 
 
 
