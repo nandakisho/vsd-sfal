@@ -1305,7 +1305,8 @@ Steps to follow:
 
 # using custom inv cell in design:
 
-![image](https://github.com/user-attachments/assets/dc68cb21-ddd2-410d-9d08-9b042cb69da0)
+![image](https://github.com/user-attachments/assets/80ab38f8-bf59-4771-b127-7466aed91c50)
+
 
 3 essential checks to verify the layout is fine before writing out lef.
 
@@ -1345,7 +1346,8 @@ repeat this for Y, VGND, VPWR
 write lef:
 	lef sky130_vsdinv_nanda.lef
 
-![image](https://github.com/user-attachments/assets/36cc90fe-b176-4447-8c0f-07ad4dacdc1a)
+![image](https://github.com/user-attachments/assets/93c35a95-ef47-4828-bdbc-102dbe3127fa)
+
 
 # Running OpenLane to source lef extracted from the inv.
 
@@ -1365,7 +1367,8 @@ Commands used:
 	set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
 	set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
 	set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
-
+	add_lefs -src $lefs
+ 
  1. run_syntheis:
     with default params:
 	# Synth defaults
@@ -1386,7 +1389,8 @@ Commands used:
 
 	set ::env(BASE_SDC_FILE) $::env(OPENLANE_ROOT)/scripts/base.sdc
 
-add imag1.png here
+![image](https://github.com/user-attachments/assets/b090cb36-58a2-4354-8ada-a2daa8e3da8d)
+
 
 Timing info:
 
@@ -1396,16 +1400,22 @@ wns -23.89
 Goal is to use Synth Strategy to bring wns and tns down:
 
 	prep -design picorv32a -tag 08-10_20-06 -overwrite
-	set ::env(SYNTH_STRATEGY) "DELAY 3"
-	set ::env(SYNTH_SIZING) 1
+	set ::env(SYNTH_STRATEGY) "DELAY 3": to meet timing
+	set ::env(SYNTH_SIZING) 1: to allow drive strenght buffering
 	run_synthesis
- 
-  add image2.png here
 
-  Floorplan:
+ Timing info:
+ tns: 0ns
+ wns: 0ns
+ 
+  
+
+Floorplan:
+
   	run_floorplan: will not work for custom designed cell
 
-  Floorplan commands:
+Floorplan commands:
+
   	init_floorplan
 
    	place_io
@@ -1413,6 +1423,7 @@ Goal is to use Synth Strategy to bring wns and tns down:
     	tap_decap_or
 
 Placement:
+
 	run_placment
 
 
@@ -1421,6 +1432,15 @@ Veiw def and verify custom lef included:
 	magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
  def:
+ 
+ ![image](https://github.com/user-attachments/assets/71e76068-5468-485c-80df-d9dcff8079e5)
+ 
+
+ custom sky130inv_nanda: abutted with adjacent cells to tap into vdd/vss
+
+ ![image](https://github.com/user-attachments/assets/b0bd1ac6-e98e-4229-b39c-23417b3f7ff3)
+
+
 
  
 
