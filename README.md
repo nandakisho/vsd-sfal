@@ -1403,7 +1403,28 @@ Goal is to use Synth Strategy to bring wns and tns down:
   add image2.png here
 
   Floorplan:
-  	run_floorplan
+  	run_floorplan: will not work for custom designed cell
+
+  Floorplan commands:
+  	init_floorplan
+
+   	place_io
+
+    	tap_decap_or
+
+Placement:
+	run_placment
+
+
+Veiw def and verify custom lef included:
+
+	magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+ def:
+
+ 
+
+
 
     
 
