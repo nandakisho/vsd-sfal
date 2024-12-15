@@ -1443,11 +1443,7 @@ Veiw def and verify custom lef included:
 </details>
 
 <details>
-<summary>
-	
-ICC2 implementation
-
-</summary>
+<summary> ICC2 implementation </summary>
 
 ICC2 flow and collaterals needed.
 
@@ -1458,7 +1454,7 @@ IC Compiler II is the industry leading place and route solution that delivers be
 
 ![image](https://github.com/user-attachments/assets/caae6848-d301-42c1-bf51-d15b2b8a2787)
 
-Design Flow
+Design Flow:
 
 ![image](https://github.com/user-attachments/assets/d6b14eb2-d77b-452e-bd63-cbb3535e72d5)
 
