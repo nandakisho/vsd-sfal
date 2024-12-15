@@ -1440,43 +1440,288 @@ Veiw def and verify custom lef included:
 
  ![image](https://github.com/user-attachments/assets/b0bd1ac6-e98e-4229-b39c-23417b3f7ff3)
 
-
-
- 
-
-
-
-    
-
-
-
-  	
-
-
-
-
-
-
- 
-
-
- 
-      
-
-
-
-
-
-
 </details>
 
+<details>
+<summary>
+	
+ICC2 implementation
+
+</summary>
+
+ICC2 flow and collaterals needed.
+
+![image](https://github.com/user-attachments/assets/62858af3-4b25-4b69-9fff-cd9e693b0fbc)
+
+IC Compiler II is the industry leading place and route solution that delivers best-in-class quality-of-results (QoR) for next-generation designs across all market verticals and process technologies while enabling unprecedented productivity. IC Compiler II includes innovative for flat and hierarchical design planning, early design exploration, congestion aware placement and optimization, clock tree synthesis, advanced node routing convergence, manufacturing compliance, and signoff closure. 
+</details>
+
+![image](https://github.com/user-attachments/assets/caae6848-d301-42c1-bf51-d15b2b8a2787)
+
+Design Flow
+
+![image](https://github.com/user-attachments/assets/d6b14eb2-d77b-452e-bd63-cbb3535e72d5)
+
+SDC Constarints used in the flow:
+	
+	set_units -time ns
+	create_clock [get_pins {pll/CLK}] -name clk -period 10
+	set_max_area 8000;
+	set_max_fanout 5 vsdbabysoc;
+	set_max_transition 10 vsdbabysoc
+	#set_min_delay -max 10 -clock[get_clk myclk] [get_ports OUT]
+	set_max_delay 10 -from dac/OUT -to [get_ports OUT]
+	#set_input_delay[expr 0.34][all_inputs]
+	
+	set_clock_latency -source 2 [get_clocks MYCLK];
+	set_clock_latency 1 [get_clocks MYCLK];
+	set_clock_uncertainty -setup 0.5 [get_clocks MYCLK];
+	set_clock_uncertainty -hold 0.5 [get_clocks MYCLK];
+	
+	set_input_delay -max 4 -clock [get_clocks MYCLK] [get_ports VCO_IN];
+	set_input_delay -max 4 -clock [get_clocks MYCLK] [get_ports ENb_CP];
+	set_input_delay -min 1 -clock [get_clocks MYCLK] [get_ports VCO_IN];
+	set_input_delay -min 1 -clock [get_clocks MYCLK] [get_ports ENb_CP];
+	
+	set_input_transition -max 0.4 [get_ports ENb_CP];
+	set_input_transition -max 0.4 [get_ports VCO_IN];
+	set_input_transition -min 0.1 [get_ports ENb_CP];
+	set_input_transition -min 0.1 [get_ports VCO_IN];
+	
+	set_load -max 0.5 [get_ports OUT];
+	set_load -min 0.5 [get_ports OUT];
+
+ Synthesisizing the design:
+
+ Commands used in DC Shell
+ 
+	set target_library /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db
+	set link_library "* /home/nanda/babysoc/VSDBabySoC/src/lib/avsdpll.db /home/nanda/babysoc/VSDBabySoC/src/lib/avsddac.db /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db"
+	echo $target_library
+	echo $link_library
+	set search_path {/home/nanda/babysoc/VSDBabySoC/src/include /home/nanda/babysoc/VSDBabySoC/src/module/}
+	echo $search_path
+	read_file {/home/nanda/babysoc/VSDBabySoC/src/module/vsdbabysoc.v /home/nanda/babysoc/VSDBabySoC/src/module/rvmyth.v /home/nanda/babysoc/VSDBabySoC/src/module/clk_gate.v } -autoread -top vsdbabysoc
+	link
+	read_sdc /home/nanda/babysoc/VSDBabySoC/ICC2flow/vsdbabysoc.sdc
+	check_design
+	compile_ultra
+
+
+	Area Rpt:
+	
+	****************************************
+	Report : area
+	Design : vsdbabysoc
+	Version: T-2022.03-SP5-6
+	Date   : Sun Dec 15 00:33:35 2024
+	****************************************
+	
+	Library(s) Used:
+	
+	    sky130_fd_sc_hd__tt_025C_1v80 (File: /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db)
+	    avsddac (File: /home/nanda/babysoc/VSDBabySoC/src/lib/avsddac.db)
+	    avsdpll (File: /home/nanda/babysoc/VSDBabySoC/src/lib/avsdpll.db)
+	
+	Number of ports:                           19
+	Number of nets:                          3307
+	Number of cells:                         3274
+	Number of combinational cells:           2595
+	Number of sequential cells:               676
+	Number of macros/black boxes:               2
+	Number of buf/inv:                       1120
+	Number of references:                       4
+	
+	Combinational area:              13481.679775
+	Buf/Inv area:                     4204.031868
+	Noncombinational area:           13532.978775
+	Macro/Black Box area:                0.000000
+	Net Interconnect area:      undefined  (Wire load has zero net area)
+	
+	Total cell area:                 27014.658550
+	Total area:                 undefined
 
 
 
+ Timing rpt:
+****************************************
+	Report : timing
+		-path full
+		-delay max
+		-max_paths 1
+	Design : vsdbabysoc
+	Version: T-2022.03-SP5-6
+	Date   : Sun Dec 15 00:33:54 2024
+	****************************************
+
+	Operating Conditions: tt_025C_1v80   Library: sky130_fd_sc_hd__tt_025C_1v80
+	Wire Load Model Mode: top
+
+	  Startpoint: core/CPU_is_addi_a3_reg
+		      (rising edge-triggered flip-flop clocked by clk)
+	  Endpoint: core/CPU_Xreg_value_a4_reg[1][31]
+		    (rising edge-triggered flip-flop clocked by clk)
+	  Path Group: clk
+	  Path Type: max
+
+	  Des/Clust/Port     Wire Load Model       Library
+	  ------------------------------------------------
+	  vsdbabysoc         Small                 sky130_fd_sc_hd__tt_025C_1v80
+
+	  Point                                                               Incr       Path
+	  --------------------------------------------------------------------------------------
+	  clock clk (rise edge)                                               0.00       0.00
+	  clock network delay (ideal)                                         0.00       0.00
+	  core/CPU_is_addi_a3_reg/CLK (sky130_fd_sc_hd__dfxtp_1)              0.00       0.00 r
+	  core/CPU_is_addi_a3_reg/Q (sky130_fd_sc_hd__dfxtp_1)                0.30       0.30 f
+	  core/U4/Y (sky130_fd_sc_hd__clkinv_1)                               0.09       0.38 r
+	  core/U519/Y (sky130_fd_sc_hd__clkinv_1)                             0.12       0.51 f
+	  core/U675/Y (sky130_fd_sc_hd__nor2_1)                               0.15       0.66 r
+	  core/U676/Y (sky130_fd_sc_hd__nand2_1)                              0.08       0.74 f
+	  core/U678/Y (sky130_fd_sc_hd__nand2_1)                              0.11       0.85 r
+	  core/U515/X (sky130_fd_sc_hd__clkbuf_1)                             0.19       1.04 r
+	  core/U267/X (sky130_fd_sc_hd__clkbuf_1)                             0.20       1.24 r
+	  core/U741/X (sky130_fd_sc_hd__a22o_1)                               0.17       1.40 r
+	  core/U742/X (sky130_fd_sc_hd__xor2_1)                               0.09       1.50 f
+	  core/U43/Y (sky130_fd_sc_hd__a21oi_1)                               0.23       1.73 r
+	  core/U10/Y (sky130_fd_sc_hd__o21ai_1)                               0.12       1.85 f
+	  core/U9/Y (sky130_fd_sc_hd__a21oi_1)                                0.20       2.05 r
+	  core/U3/Y (sky130_fd_sc_hd__o21ai_1)                                0.13       2.18 f
+	  core/U94/Y (sky130_fd_sc_hd__a21oi_2)                               0.19       2.37 r
+	  core/U251/Y (sky130_fd_sc_hd__o21ai_2)                              0.09       2.46 f
+	  core/U250/Y (sky130_fd_sc_hd__a21oi_2)                              0.16       2.62 r
+	  core/U261/Y (sky130_fd_sc_hd__o21ai_1)                              0.10       2.72 f
+	  core/U260/Y (sky130_fd_sc_hd__a21oi_1)                              0.20       2.92 r
+	  core/U259/Y (sky130_fd_sc_hd__o21ai_1)                              0.12       3.04 f
+	  core/U530/Y (sky130_fd_sc_hd__a21oi_1)                              0.20       3.24 r
+	  core/U252/Y (sky130_fd_sc_hd__o21ai_1)                              0.13       3.37 f
+	  core/U249/Y (sky130_fd_sc_hd__a21oi_2)                              0.17       3.54 r
+	  core/U257/Y (sky130_fd_sc_hd__o21ai_1)                              0.10       3.65 f
+	  core/U772/X (sky130_fd_sc_hd__a21o_1)                               0.18       3.83 f
+	  core/U1309/COUT (sky130_fd_sc_hd__fa_1)                             0.38       4.20 f
+	  core/U1287/COUT (sky130_fd_sc_hd__fa_1)                             0.39       4.59 f
+	  core/U1269/COUT (sky130_fd_sc_hd__fa_1)                             0.40       4.99 f
+	  core/U38/COUT (sky130_fd_sc_hd__fa_2)                               0.37       5.36 f
+	  core/U518/Y (sky130_fd_sc_hd__clkinv_1)                             0.06       5.42 r
+	  core/U774/Y (sky130_fd_sc_hd__o21ai_1)                              0.06       5.48 f
+	  core/U540/COUT (sky130_fd_sc_hd__fa_1)                              0.38       5.86 f
+	  core/U1784/COUT (sky130_fd_sc_hd__fa_1)                             0.39       6.26 f
+	  core/U1181/COUT (sky130_fd_sc_hd__fa_1)                             0.40       6.65 f
+	  core/U77/COUT (sky130_fd_sc_hd__fa_2)                               0.37       7.02 f
+	  core/U75/X (sky130_fd_sc_hd__a21o_1)                                0.17       7.19 f
+	  core/U1118/COUT (sky130_fd_sc_hd__fa_1)                             0.38       7.57 f
+	  core/U297/COUT (sky130_fd_sc_hd__fa_1)                              0.39       7.96 f
+	  core/U539/COUT (sky130_fd_sc_hd__fa_1)                              0.39       8.35 f
+	  core/U296/COUT (sky130_fd_sc_hd__fa_1)                              0.42       8.77 f
+	  core/U69/Y (sky130_fd_sc_hd__clkinv_1)                              0.06       8.83 r
+	  core/U779/Y (sky130_fd_sc_hd__o21ai_1)                              0.07       8.90 f
+	  core/U545/COUT (sky130_fd_sc_hd__fa_1)                              0.38       9.28 f
+	  core/U780/X (sky130_fd_sc_hd__xor2_1)                               0.18       9.46 r
+	  core/U386/X (sky130_fd_sc_hd__and2_1)                               0.20       9.66 r
+	  core/U404/Y (sky130_fd_sc_hd__clkinv_1)                             0.14       9.80 f
+	  core/U795/Y (sky130_fd_sc_hd__o22ai_1)                              0.12       9.91 r
+	  core/CPU_Xreg_value_a4_reg[1][31]/D (sky130_fd_sc_hd__dfxtp_1)      0.00       9.92 r
+	  data arrival time                                                              9.92
+	
+	  clock clk (rise edge)                                              10.00      10.00
+	  clock network delay (ideal)                                         0.00      10.00
+	  core/CPU_Xreg_value_a4_reg[1][31]/CLK (sky130_fd_sc_hd__dfxtp_1)
+	                                                                      0.00      10.00 r
+	  library setup time                                                 -0.08       9.92
+	  data required time                                                             9.92
+	  --------------------------------------------------------------------------------------
+	  data required time                                                             9.92
+	  data arrival time                                                             -9.92
+	  --------------------------------------------------------------------------------------
+	  slack (MET)                                                                    0.01
+	
+	
+	  Startpoint: dac/OUT (internal path startpoint)
+	  Endpoint: OUT (output port)
+	  Path Group: default
+	  Path Type: max
+	
+	  Des/Clust/Port     Wire Load Model       Library
+	  ------------------------------------------------
+	  vsdbabysoc         Small                 sky130_fd_sc_hd__tt_025C_1v80
+	
+	  Point                                    Incr       Path
+	  -----------------------------------------------------------
+	  input external delay                     0.00       0.00 r
+	  dac/OUT (avsddac)                        0.00       0.00 r
+	  OUT (out)                                0.87       0.87 r
+	  data arrival time                                   0.87
+	
+	  max_delay                               10.00      10.00
+	  output external delay                    0.00      10.00
+	  data required time                                 10.00
+	  -----------------------------------------------------------
+	  data required time                                 10.00
+	  data arrival time                                  -0.87
+	  -----------------------------------------------------------
+	  slack (MET)                                         9.13
 
 
+   Power rpt:
 
-
+	   ****************************************
+	Report : power
+	        -analysis_effort low
+	Design : vsdbabysoc
+	Version: T-2022.03-SP5-6
+	Date   : Sun Dec 15 00:34:17 2024
+	****************************************
+	
+	
+	Library(s) Used:
+	
+	    sky130_fd_sc_hd__tt_025C_1v80 (File: /home/nanda/babysoc/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.db)
+	    avsddac (File: /home/nanda/babysoc/VSDBabySoC/src/lib/avsddac.db)
+	    avsdpll (File: /home/nanda/babysoc/VSDBabySoC/src/lib/avsdpll.db)
+	
+	
+	Operating Conditions: tt_025C_1v80   Library: sky130_fd_sc_hd__tt_025C_1v80
+	Wire Load Model Mode: top
+	
+	Design        Wire Load Model            Library
+	------------------------------------------------
+	vsdbabysoc             Small             sky130_fd_sc_hd__tt_025C_1v80
+	
+	
+	Global Operating Voltage = 1.8  
+	Power-specific unit information :
+	    Voltage Units = 1V
+	    Capacitance Units = 1.000000pf
+	    Time Units = 1ns
+	    Dynamic Power Units = 1mW    (derived from V,C,T units)
+	    Leakage Power Units = 1nW
+	
+	
+	Attributes
+	----------
+	i - Including register clock pin internal power
+	
+	
+	  Cell Internal Power  =   2.8782 mW   (82%)
+	  Net Switching Power  = 615.4097 uW   (18%)
+	                         ---------
+	Total Dynamic Power    =   3.4936 mW  (100%)
+	
+	Cell Leakage Power     =   8.7161 nW
+	
+	
+	                 Internal         Switching           Leakage            Total
+	Power Group      Power            Power               Power              Power   (   %    )  Attrs
+	--------------------------------------------------------------------------------------------------
+	io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+	memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+	black_box          0.0000            0.4454            0.0000            0.4454  (  12.75%)
+	clock_network      2.7524            0.0000            0.0000            2.7524  (  78.78%)  i
+	register       4.6189e-02        1.6094e-02            5.4668        6.2288e-02  (   1.78%)
+	sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+	combinational  7.9634e-02            0.1539            3.2493            0.2336  (   6.69%)
+	--------------------------------------------------------------------------------------------------
+	Total              2.8782 mW         0.6154 mW         8.7161 nW         3.4936 mW 
 
 
 
