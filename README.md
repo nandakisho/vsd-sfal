@@ -1454,7 +1454,7 @@ ICC2 flow and collaterals needed.
 ![image](https://github.com/user-attachments/assets/62858af3-4b25-4b69-9fff-cd9e693b0fbc)
 
 IC Compiler II is the industry leading place and route solution that delivers best-in-class quality-of-results (QoR) for next-generation designs across all market verticals and process technologies while enabling unprecedented productivity. IC Compiler II includes innovative for flat and hierarchical design planning, early design exploration, congestion aware placement and optimization, clock tree synthesis, advanced node routing convergence, manufacturing compliance, and signoff closure. 
-</details>
+
 
 ![image](https://github.com/user-attachments/assets/caae6848-d301-42c1-bf51-d15b2b8a2787)
 
@@ -1725,6 +1725,7 @@ SDC Constarints used in the flow:
 
 
 
+</details>
 
 
 
